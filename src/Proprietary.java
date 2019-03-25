@@ -12,45 +12,45 @@ import java.util.Objects;
  * @version 20190325
  */
 public class Proprietary extends User {
-    private List<Carro> carros;
-    private int classificacao;
+    private List<Car> cars;
+    private int rating;
     private List<Rental> rented;
 
     public Proprietary (){
         super();
-        this.carros = new ArrayList<>();
-        this.classificacao = 0;
+        this.cars = new ArrayList<>();
+        this.rating = 0;
         this.rented = new ArrayList<>();
     }
 
-    public Proprietary (String email, String password, String address, String birthDate, List<Carro> carros, int classificacao, List<Rental> rented){
+    public Proprietary (String email, String password, String address, String birthDate, List<Car> cars, int rating, List<Rental> rented){
         super(email, password, address, birthDate);
-        this.carros = carros;
-        this.classificacao = classificacao;
+        this.cars = cars;
+        this.rating = rating;
         this.rented = rented;
     }
 
     public Proprietary (Proprietary proprietary){
         super(proprietary);
-        this.carros = proprietary.getCarros();
-        this.classificacao = proprietary.getClassificacao();
+        this.cars = proprietary.getCars();
+        this.rating = proprietary.getRating();
         this.rented = proprietary.getRented();
     }
 
-    public List<Carro> getCarros() {
-        return carros;
+    public List<Car> getCars() {
+        return cars;
     }
 
-    public void setCarros(List<Carro> carros) {
-        this.carros = carros;
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public int getClassificacao() {
-        return classificacao;
+    public int getRating() {
+        return rating;
     }
 
-    public void setClassificacao(int classificacao) {
-        this.classificacao = classificacao;
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public List<Rental> getRented() {
@@ -67,30 +67,30 @@ public class Proprietary extends User {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Proprietary that = (Proprietary) o;
-        return classificacao == that.classificacao &&
-                Objects.equals(carros, that.carros) &&
+        return rating == that.rating &&
+                Objects.equals(cars, that.cars) &&
                 Objects.equals(rented, that.rented);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), carros, classificacao, rented);
+        return Objects.hash(super.hashCode(), cars, rating, rented);
     }
 
     @Override
     public String toString() {
         return "Proprietary{" +
                 super.toString() +
-                "carros=" + carros.toString() +
-                ", classificacao=" + classificacao +
+                "cars=" + cars.toString() +
+                ", rating=" + rating +
                 ", rented=" + rented.toString() +
                 '}';
     }
 
     public Proprietary clone() {
         Proprietary newProprietary = (Proprietary) super.clone();
-        newProprietary.setCarros(this.carros);
-        newProprietary.setClassificacao(this.classificacao);
+        newProprietary.setCars(this.cars);
+        newProprietary.setRating(this.rating);
         newProprietary.setRented(this.rented);
         return newProprietary;
     }

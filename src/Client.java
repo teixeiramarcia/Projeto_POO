@@ -13,33 +13,33 @@ import java.util.Objects;
  * @version 20190325
  */
 public class Client extends User {
-    private Point point;
+    private Point location;
     private List<Rental> rentals;
 
     public Client (){
         super();
-        this.point = new Point(0,0);
+        this.location = new Point(0,0);
         this.rentals = new ArrayList<>();
     }
 
-    public Client(String email, String password, String address, String birthDate, Point point, List<Rental> rentals) {
+    public Client(String email, String password, String address, String birthDate, Point location, List<Rental> rentals) {
         super(email, password, address, birthDate);
-        this.point = point;
+        this.location = location;
         this.rentals = rentals;
     }
 
     public Client (Client client){
         super(client);
-        this.point = client.getPoint();
+        this.location = client.getPoint();
         this.rentals = client.getRentals();
     }
 
     public Point getPoint() {
-        return point;
+        return location;
     }
 
-    public void setPoint(Point point) {
-        this.point = point;
+    public void setPoint(Point location) {
+        this.location = location;
     }
 
     public List<Rental> getRentals() {
@@ -56,27 +56,27 @@ public class Client extends User {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Client client = (Client) o;
-        return Objects.equals(point, client.point) &&
+        return Objects.equals(location, client.location) &&
                 Objects.equals(rentals, client.rentals);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), point, rentals);
+        return Objects.hash(super.hashCode(), location, rentals);
     }
 
     @Override
     public String toString() {
         return "Client{" +
                 super.toString() +
-                ", point=" + point.toString() +
+                ", location=" + location.toString() +
                 ", rentals=" + rentals.toString() +
                 '}';
     }
 
     public Client clone() {
         Client newClient = (Client) super.clone();
-        newClient.setPoint(this.point);
+        newClient.setPoint(this.location);
         newClient.setRentals(this.rentals);
         return newClient;
     }
