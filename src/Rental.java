@@ -1,33 +1,24 @@
+import java.awt.Point;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Write a description of class Rental here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author A80943
+ * @author A81283
+ * @author A85762
+ *
+ * @version 20190326
  */
-public class Rental
-{
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Rental
-     */
-    public Rental()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+public class Rental {
+    private Car rentedCar;
+    private Client client;
+    private Point initialPosCar;
+    private Point finalPos;
+    private String rentalStatus;
+    private LocalDateTime rentalDate;
+    private LocalDateTime useStartDate;
+    private LocalDateTime useFinishDate;
+    private int rating;
 }

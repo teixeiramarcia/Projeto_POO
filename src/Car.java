@@ -6,8 +6,11 @@ import java.util.Objects;
 /**
  * Write a description of class Car here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author A80943
+ * @author A81283
+ * @author A85762
+ *
+ * @version 20190326
  */
 public class Car {
     private int mediumSpeed;
@@ -16,6 +19,9 @@ public class Car {
     private List<Rental> pastRents;
     private int rating;
     private Point location;
+    private Proprietary proprietary;
+    private String licensePlate;
+    private double autonomyATM;
 
     public Car (){
         this.mediumSpeed = 0;
@@ -24,15 +30,22 @@ public class Car {
         this.pastRents = new ArrayList<>();
         this.rating = 0;
         this.location = new Point(0,0);
+        this.proprietary = new Proprietary();
+        this.licensePlate = "";
+        this.autonomyATM = 0;
     }
 
-    public Car (int mediumSpeed, double priceKm, double consumeKm, List<Rental> pastRents, int rating, Point location){
+    public Car (int mediumSpeed, double priceKm, double consumeKm, List<Rental> pastRents, int rating, Point location,
+                Proprietary proprietary, String licensePlate, double autonomyATM){
         this.mediumSpeed = mediumSpeed;
         this.priceKm = priceKm;
         this.consumeKm = consumeKm;
         this.pastRents = pastRents;
         this.rating = rating;
         this.location = location;
+        this.proprietary = proprietary;
+        this.licensePlate = licensePlate;
+        this.autonomyATM = autonomyATM;
     }
 
     public Car (Car car){
@@ -42,6 +55,9 @@ public class Car {
         this.pastRents = car.getPastRents();
         this.rating = car.getRating();
         this.location = car.getLocation();
+        this.proprietary = car.getProprietary();
+        this.licensePlate = car.getLicensePlate();
+        this.autonomyATM = car.getAutonomyATM();
     }
 
     public int getMediumSpeed() {
@@ -92,6 +108,30 @@ public class Car {
         this.location = location;
     }
 
+    public Proprietary getProprietary() {
+        return proprietary;
+    }
+
+    public void setProprietary(Proprietary proprietary) {
+        this.proprietary = proprietary;
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
+    }
+
+    public double getAutonomyATM() {
+        return autonomyATM;
+    }
+
+    public void setAutonomyATM(double autonomyATM) {
+        this.autonomyATM = autonomyATM;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -101,13 +141,16 @@ public class Car {
                 Double.compare(car.priceKm, priceKm) == 0 &&
                 Double.compare(car.consumeKm, consumeKm) == 0 &&
                 rating == car.rating &&
+                Double.compare(car.autonomyATM, autonomyATM) == 0 &&
                 Objects.equals(pastRents, car.pastRents) &&
-                Objects.equals(location, car.location);
+                Objects.equals(location, car.location) &&
+                Objects.equals(proprietary, car.proprietary) &&
+                Objects.equals(licensePlate, car.licensePlate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mediumSpeed, priceKm, consumeKm, pastRents, rating, location);
+        return Objects.hash(mediumSpeed, priceKm, consumeKm, pastRents, rating, location, proprietary, licensePlate, autonomyATM);
     }
 
     @Override
@@ -119,6 +162,9 @@ public class Car {
                 ", pastRents=" + pastRents.toString() +
                 ", rating=" + rating +
                 ", location=" + location.toString() +
+                ", proprietary=" + proprietary +
+                ", licensePlate='" + licensePlate + '\'' +
+                ", autonomyATM=" + autonomyATM +
                 '}';
     }
 
@@ -130,6 +176,9 @@ public class Car {
         newCar.setPastRents(this.pastRents);
         newCar.setRating(this.rating);
         newCar.setLocation(this.location);
+        newCar.setProprietary(this.proprietary);
+        newCar.setLicensePlate(this.licensePlate);
+        newCar.setAutonomyATM(this.autonomyATM);
         return newCar;
     }
 }
