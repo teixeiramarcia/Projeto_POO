@@ -29,7 +29,7 @@ public class Car {
         this.consumeKm = 0;
         this.pastRents = new ArrayList<>();
         this.rating = 0;
-        this.location = new Point(0,0);
+        this.location = new Point(-1,-1);
         this.proprietary = new Proprietary();
         this.licensePlate = "";
         this.autonomyATM = 0;

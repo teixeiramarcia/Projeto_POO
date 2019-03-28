@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -16,19 +17,22 @@ public class User {
     private String password;
     private String address;
     private LocalDate birthDate;
+    private Point location;
 
     public User (){
         this.email = "N/A";
         this.password = "";
         this.address = "N/A";
         this.birthDate = null;
+        this.location = new Point(-1,-1);
     }
 
-    public User(String email, String password, String address, String birthDate) {
+    public User(String email, String password, String address, String birthDate, Point location) {
         this.email = email;
         this.password = password;
         this.address = address;
         this.birthDate = LocalDate.parse(birthDate);
+        this.location = location;
     }
 
     public User (User user){
@@ -36,6 +40,7 @@ public class User {
         this.password = user.getPassword();
         this.address = user.getAddress();
         this.birthDate = user.getBirthDate();
+        this.location = user.getLocation();
     }
 
     public String getEmail() {
@@ -70,6 +75,14 @@ public class User {
         this.birthDate = birthDate;
     }
 
+    public Point getLocation() {
+        return location;
+    }
+
+    public void setLocation(Point location) {
+        this.location = location;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,12 +91,13 @@ public class User {
         return Objects.equals(email, user.email) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(address, user.address) &&
-                Objects.equals(birthDate, user.birthDate);
+                Objects.equals(birthDate, user.birthDate) &&
+                Objects.equals(location, user.location);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, password, address, birthDate);
+        return Objects.hash(email, password, address, birthDate, location);
     }
 
     @Override
@@ -93,6 +107,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", address='" + address + '\'' +
                 ", birthDate=" + birthDate +
+                ", location=" + location +
                 '}';
     }
 
@@ -102,6 +117,7 @@ public class User {
         newUser.setPassword(this.password);
         newUser.setAddress(this.address);
         newUser.setBirthDate(this.birthDate);
+        newUser.setLocation(this.location);
         return newUser;
     }
 }

@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -23,8 +24,8 @@ public class Proprietary extends User {
         this.rented = new ArrayList<>();
     }
 
-    public Proprietary (String email, String password, String address, String birthDate, List<Car> cars, int rating, List<Rental> rented){
-        super(email, password, address, birthDate);
+    public Proprietary (String email, String password, String address, String birthDate, Point location, List<Car> cars, int rating, List<Rental> rented){
+        super(email, password, address, birthDate, location);
         this.cars = cars;
         this.rating = rating;
         this.rented = rented;
