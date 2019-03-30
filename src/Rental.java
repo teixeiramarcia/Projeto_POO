@@ -1,5 +1,4 @@
 import java.awt.Point;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -28,7 +27,7 @@ public class Rental {
         this.client = new Client();
         this.initialPosCar = new Point(-1,-1);
         this.finalPos = new Point(-1,1);
-        this.rentalStatus = "";
+        this.rentalStatus = "N/A";
         this.rentalDate = null;
         this.useStartDate = null;
         this.useFinishDate = null;
@@ -150,7 +149,8 @@ public class Rental {
 
     @Override
     public int hashCode() {
-        return Objects.hash(rentedCar, client, initialPosCar, finalPos, rentalStatus, rentalDate, useStartDate, useFinishDate, rating);
+        return Objects.hash(rentedCar, client, initialPosCar, finalPos, rentalStatus, rentalDate, useStartDate,
+                useFinishDate, rating);
     }
 
     @Override

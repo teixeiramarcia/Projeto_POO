@@ -31,7 +31,7 @@ public class Car {
         this.rating = 0;
         this.location = new Point(-1,-1);
         this.proprietary = new Proprietary();
-        this.licensePlate = "";
+        this.licensePlate = "N/A";
         this.autonomyATM = 0;
     }
 

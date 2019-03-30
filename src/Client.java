@@ -20,7 +20,8 @@ public class Client extends User {
         this.rentals = new ArrayList<>();
     }
 
-    public Client(String email, String password, String address, String birthDate, Point location, List<Rental> rentals) {
+    public Client(String email, String password, String address, String birthDate, Point location,
+                  List<Rental> rentals){
         super(email, password, address, birthDate, location);
         this.rentals = rentals;
     }

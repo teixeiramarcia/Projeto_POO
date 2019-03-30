@@ -21,7 +21,7 @@ public class User {
 
     public User (){
         this.email = "N/A";
-        this.password = "";
+        this.password = "N/A";
         this.address = "N/A";
         this.birthDate = null;
         this.location = new Point(-1,-1);
