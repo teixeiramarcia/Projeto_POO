@@ -1,4 +1,4 @@
-import java.awt.Point;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -9,55 +9,47 @@ import java.util.Objects;
  * @author A80943
  * @author A81283
  * @author A85762
- *
  * @version 20190326
  */
+
 public class Car {
     private int mediumSpeed;
     private double priceKm;
-    private double consumeKm;
     private List<Rental> pastRents;
     private int rating;
     private Point location;
     private Proprietary proprietary;
     private String licensePlate;
-    private double autonomyATM;
 
-    public Car (){
+    public Car() {
         this.mediumSpeed = 0;
         this.priceKm = 0;
-        this.consumeKm = 0;
         this.pastRents = new ArrayList<>();
-        this.rating = 0;
-        this.location = new Point(-1,-1);
+        this.rating = -1;
+        this.location = new Point(-1, -1);
         this.proprietary = new Proprietary();
         this.licensePlate = "N/A";
-        this.autonomyATM = 0;
     }
 
-    public Car (int mediumSpeed, double priceKm, double consumeKm, List<Rental> pastRents, int rating, Point location,
-                Proprietary proprietary, String licensePlate, double autonomyATM){
+    public Car(int mediumSpeed, double priceKm, List<Rental> pastRents, int rating, Point location,
+               Proprietary proprietary, String licensePlate) {
         this.mediumSpeed = mediumSpeed;
         this.priceKm = priceKm;
-        this.consumeKm = consumeKm;
         this.pastRents = pastRents;
         this.rating = rating;
         this.location = location;
         this.proprietary = proprietary;
         this.licensePlate = licensePlate;
-        this.autonomyATM = autonomyATM;
     }
 
-    public Car (Car car){
+    public Car(Car car) {
         this.mediumSpeed = car.getMediumSpeed();
         this.priceKm = car.getPriceKm();
-        this.consumeKm = car.getConsumeKm();
         this.pastRents = car.getPastRents();
         this.rating = car.getRating();
         this.location = car.getLocation();
         this.proprietary = car.getProprietary();
         this.licensePlate = car.getLicensePlate();
-        this.autonomyATM = car.getAutonomyATM();
     }
 
     public int getMediumSpeed() {
@@ -74,14 +66,6 @@ public class Car {
 
     public void setPriceKm(double priceKm) {
         this.priceKm = priceKm;
-    }
-
-    public double getConsumeKm() {
-        return consumeKm;
-    }
-
-    public void setConsumeKm(double consumeKm) {
-        this.consumeKm = consumeKm;
     }
 
     public List<Rental> getPastRents() {
@@ -124,14 +108,6 @@ public class Car {
         this.licensePlate = licensePlate;
     }
 
-    public double getAutonomyATM() {
-        return autonomyATM;
-    }
-
-    public void setAutonomyATM(double autonomyATM) {
-        this.autonomyATM = autonomyATM;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -139,9 +115,7 @@ public class Car {
         Car car = (Car) o;
         return mediumSpeed == car.mediumSpeed &&
                 Double.compare(car.priceKm, priceKm) == 0 &&
-                Double.compare(car.consumeKm, consumeKm) == 0 &&
                 rating == car.rating &&
-                Double.compare(car.autonomyATM, autonomyATM) == 0 &&
                 Objects.equals(pastRents, car.pastRents) &&
                 Objects.equals(location, car.location) &&
                 Objects.equals(proprietary, car.proprietary) &&
@@ -150,7 +124,7 @@ public class Car {
 
     @Override
     public int hashCode() {
-        return Objects.hash(mediumSpeed, priceKm, consumeKm, pastRents, rating, location, proprietary, licensePlate, autonomyATM);
+        return Objects.hash(mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate);
     }
 
     @Override
@@ -158,27 +132,23 @@ public class Car {
         return "Car{" +
                 "mediumSpeed=" + mediumSpeed +
                 ", priceKm=" + priceKm +
-                ", consumeKm=" + consumeKm +
                 ", pastRents=" + pastRents.toString() +
                 ", rating=" + rating +
-                ", location=" + location.toString() +
+                ", location=" + location +
                 ", proprietary=" + proprietary +
                 ", licensePlate='" + licensePlate + '\'' +
-                ", autonomyATM=" + autonomyATM +
                 '}';
     }
 
-    public Car clone(){
+    public Car clone() {
         Car newCar = new Car();
         newCar.setMediumSpeed(this.mediumSpeed);
         newCar.setPriceKm(this.priceKm);
-        newCar.setConsumeKm(this.consumeKm);
         newCar.setPastRents(this.pastRents);
         newCar.setRating(this.rating);
         newCar.setLocation(this.location);
         newCar.setProprietary(this.proprietary);
         newCar.setLicensePlate(this.licensePlate);
-        newCar.setAutonomyATM(this.autonomyATM);
         return newCar;
     }
 }

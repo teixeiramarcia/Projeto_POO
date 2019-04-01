@@ -1,4 +1,4 @@
-import java.awt.Point;
+import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -8,9 +8,9 @@ import java.util.Objects;
  * @author A80943
  * @author A81283
  * @author A85762
- *
  * @version 20190326
  */
+
 public class Rental {
     private Car rentedCar;
     private Client client;
@@ -22,11 +22,11 @@ public class Rental {
     private LocalDateTime useFinishDate;
     private int rating;
 
-    public Rental (){
+    public Rental() {
         this.rentedCar = new Car();
         this.client = new Client();
-        this.initialPosCar = new Point(-1,-1);
-        this.finalPos = new Point(-1,1);
+        this.initialPosCar = new Point(-1, -1);
+        this.finalPos = new Point(-1, 1);
         this.rentalStatus = "N/A";
         this.rentalDate = null;
         this.useStartDate = null;
@@ -34,8 +34,8 @@ public class Rental {
         this.rating = 0;
     }
 
-    public Rental (Car rentedCar, Client client, Point initialPosCar, Point finalPos, String rentalStatus,
-                   LocalDateTime rentalDate, LocalDateTime useStartDate, LocalDateTime useFinishDate, int rating){
+    public Rental(Car rentedCar, Client client, Point initialPosCar, Point finalPos, String rentalStatus,
+                  LocalDateTime rentalDate, LocalDateTime useStartDate, LocalDateTime useFinishDate, int rating) {
         this.rentedCar = rentedCar;
         this.client = client;
         this.initialPosCar = initialPosCar;
@@ -47,7 +47,7 @@ public class Rental {
         this.rating = rating;
     }
 
-    public Rental (Rental rental){
+    public Rental(Rental rental) {
         this.rentedCar = rental.getRentedCar();
         this.client = rental.getClient();
         this.initialPosCar = rental.getInitialPosCar();
@@ -168,7 +168,7 @@ public class Rental {
                 '}';
     }
 
-    public Rental clone(){
+    public Rental clone() {
         Rental newRental = new Rental();
         newRental.setRentedCar(this.rentedCar);
         newRental.setClient(this.client);

@@ -9,30 +9,30 @@ import java.util.Objects;
  * @author A80943
  * @author A81283
  * @author A85762
- *
  * @version 20190325
  */
+
 public class Proprietary extends User {
     private List<Car> cars;
     private int rating;
     private List<Rental> rented;
 
-    public Proprietary (){
+    public Proprietary() {
         super();
         this.cars = new ArrayList<>();
-        this.rating = 0;
+        this.rating = -1;
         this.rented = new ArrayList<>();
     }
 
-    public Proprietary (String email, String password, String address, String birthDate, Point location, List<Car> cars,
-                        int rating, List<Rental> rented){
+    public Proprietary(String email, String password, String address, String birthDate, Point location, List<Car> cars,
+                       int rating, List<Rental> rented) {
         super(email, password, address, birthDate, location);
         this.cars = cars;
         this.rating = rating;
         this.rented = rented;
     }
 
-    public Proprietary (Proprietary proprietary){
+    public Proprietary(Proprietary proprietary) {
         super(proprietary);
         this.cars = proprietary.getCars();
         this.rating = proprietary.getRating();
@@ -83,7 +83,7 @@ public class Proprietary extends User {
     public String toString() {
         return "Proprietary{" +
                 super.toString() +
-                "cars=" + cars.toString() +
+                ", cars=" + cars.toString() +
                 ", rating=" + rating +
                 ", rented=" + rented.toString() +
                 '}';

@@ -8,7 +8,6 @@ import java.util.Objects;
  * @author A80943
  * @author A81283
  * @author A85762
- *
  * @version 20190325
  */
 
@@ -19,12 +18,12 @@ public class User {
     private LocalDate birthDate;
     private Point location;
 
-    public User (){
+    public User() {
         this.email = "N/A";
         this.password = "N/A";
         this.address = "N/A";
         this.birthDate = null;
-        this.location = new Point(-1,-1);
+        this.location = new Point(-1, -1);
     }
 
     public User(String email, String password, String address, String birthDate, Point location) {
@@ -35,7 +34,7 @@ public class User {
         this.location = location;
     }
 
-    public User (User user){
+    public User(User user) {
         this.email = user.getEmail();
         this.password = user.getPassword();
         this.address = user.getAddress();
