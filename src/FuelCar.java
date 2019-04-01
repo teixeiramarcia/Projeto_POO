@@ -101,7 +101,7 @@ public class FuelCar extends Car {
         return currentFuel * fuelConsumeKM;
     }
 
-    public double getTotalAutonomy(){
+    public double getTotalAutonomy() {
         return totalFuel * fuelConsumeKM;
     }
 }

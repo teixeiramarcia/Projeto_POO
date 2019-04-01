@@ -146,7 +146,7 @@ public class HybridCar extends Car {
         return (currentFuel * fuelConsumeKM) + (currentBattery * batteryConsumeKM);
     }
 
-    public double getTotalAutonomy(){
+    public double getTotalAutonomy() {
         return (totalFuel * fuelConsumeKM) + (totalBattery * batteryConsumeKM);
     }
 }

@@ -100,7 +100,7 @@ public class ElectricCar extends Car {
         return currentBattery * batteryConsumeKM;
     }
 
-    public double getTotalAutonomy(){
+    public double getTotalAutonomy() {
         return totalBattery * batteryConsumeKM;
     }
 }

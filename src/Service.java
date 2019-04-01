@@ -81,7 +81,7 @@ public class Service {
         return autonomy;
     }
 
-    private double getTotalAutonomy(Car car){
+    private double getTotalAutonomy(Car car) {
         double autonomy = 0;
 
         if (car.getClass().equals(ElectricCar.class)) {
@@ -99,13 +99,13 @@ public class Service {
         return car.getPriceKm() * distance;
     }
 
-    private double timeClientToCar (Client client, Car car){
+    private double timeClientToCar(Client client, Car car) {
         double dist = distance(client.getLocation(), car.getLocation());
 
-        return (dist*60)/4;
+        return (dist * 60) / 4;
     }
 
-    public Rental createRental (Car rentedCar, Client client, Point finalPos, LocalDateTime useStartDate) {
+    public Rental createRental(Car rentedCar, Client client, Point finalPos, LocalDateTime useStartDate) {
         Rental rental = new Rental(rentedCar, client, rentedCar.getLocation(), finalPos, "Pendente",
                 LocalDateTime.now(), useStartDate, null, -1);
 

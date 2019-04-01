@@ -1,6 +1,3 @@
-import java.awt.*;
-import java.util.ArrayList;
-
 /**
  * Write a description of class UMcarroJa here.
  *
