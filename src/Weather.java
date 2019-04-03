@@ -5,9 +5,12 @@ import java.util.Objects;
 /**
  * Write a description of class Weather here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author A80943
+ * @author A81283
+ * @author A85762
+ * @version 20190402
  */
+
 public class Weather {
     private List<WeatherStatus> weathers;
 
