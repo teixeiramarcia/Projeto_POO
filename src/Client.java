@@ -15,24 +15,28 @@ import java.util.Objects;
 public class Client extends User {
     private List<Rental> rentals;
     private int rating;
+    private int drivingSkill;
 
     public Client() {
         super();
         this.rentals = new ArrayList<>();
         this.rating = -1;
+        this.drivingSkill = -1;
     }
 
     public Client(String email, String password, String address, String birthDate, Point location,
-                  List<Rental> rentals, int rating) {
+                  List<Rental> rentals, int rating, int drivingSkill) {
         super(email, password, address, birthDate, location);
         this.rentals = rentals;
         this.rating = rating;
+        this.drivingSkill = drivingSkill;
     }
 
     public Client(Client client) {
         super(client);
         this.rentals = client.getRentals();
         this.rating = client.getRating();
+        this.drivingSkill = client.getDrivingSkill();
     }
 
 
@@ -52,6 +56,14 @@ public class Client extends User {
         this.rating = rating;
     }
 
+    public int getDrivingSkill() {
+        return drivingSkill;
+    }
+
+    public void setDrivingSkill(int drivingSkill) {
+        this.drivingSkill = drivingSkill;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -59,12 +71,13 @@ public class Client extends User {
         if (!super.equals(o)) return false;
         Client client = (Client) o;
         return rating == client.rating &&
+                drivingSkill == client.drivingSkill &&
                 Objects.equals(rentals, client.rentals);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), rentals, rating);
+        return Objects.hash(super.hashCode(), rentals, rating, drivingSkill);
     }
 
     @Override
@@ -73,6 +86,7 @@ public class Client extends User {
                 super.toString() +
                 ", rentals=" + rentals +
                 ", rating=" + rating +
+                ", drivingSkill=" + drivingSkill +
                 '}';
     }
 
@@ -80,6 +94,7 @@ public class Client extends User {
         Client newClient = (Client) super.clone();
         newClient.setRentals(this.rentals);
         newClient.setRating(this.rating);
+        newClient.setDrivingSkill(this.drivingSkill);
         return newClient;
     }
 }

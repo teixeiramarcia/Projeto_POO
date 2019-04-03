@@ -30,9 +30,9 @@ public class HybridCar extends Car {
     }
 
     public HybridCar(int mediumSpeed, double priceKm, List<Rental> pastRents, int rating, Point location,
-                     Proprietary proprietary, String licensePlate, double currentFuel, double currentBattery,
+                     Proprietary proprietary, String licensePlate, int liability, double currentFuel, double currentBattery,
                      double fuelConsumeKM, double batteryConsumeKM, double totalBattery, double totalFuel) {
-        super(mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate);
+        super(mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate, liability);
         this.currentFuel = currentFuel;
         this.currentBattery = currentBattery;
         this.fuelConsumeKM = fuelConsumeKM;

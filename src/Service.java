@@ -115,4 +115,27 @@ public class Service {
 
         return rental;
     }
+
+    public Rental setStatusToAccepted(Rental rental) {
+        rental.setRentalStatus("Accepted");
+        return rental;
+    }
+
+    public Rental setStatusToDenied(Rental rental) {
+        rental.setRentalStatus("Denied");
+        return rental;
+    }
+
+    public double tripTime (Rental rental, WeatherStatus weatherStatus, Car car, Client client){
+        double t = distance(rental.getInitialPosCar(), rental.getFinalPos()) / car.getMediumSpeed();
+        double p = 0;
+        p = penalty(weatherStatus.getTripTimePenalty(), t);
+        p += penalty(car.getLiability(), t);
+        p += penalty(client.getDrivingSkill(), t);
+        return t + p;
+    }
+
+    public double penalty (int penalty, double time){
+        return (((5-penalty) * 0.1) * time);
+    }
 }

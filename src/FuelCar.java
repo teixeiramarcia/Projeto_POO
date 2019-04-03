@@ -24,9 +24,9 @@ public class FuelCar extends Car {
     }
 
     public FuelCar(int mediumSpeed, double priceKm, List<Rental> pastRents, int rating, Point location,
-                   Proprietary proprietary, String licensePlate, double currentFuel, double fuelConsumeKM,
+                   Proprietary proprietary, String licensePlate, int liability, double currentFuel, double fuelConsumeKM,
                    double totalFuel) {
-        super(mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate);
+        super(mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate, liability);
         this.currentFuel = currentFuel;
         this.fuelConsumeKM = fuelConsumeKM;
         this.totalFuel = totalFuel;

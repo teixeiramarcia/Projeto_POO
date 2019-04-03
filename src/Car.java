@@ -20,6 +20,7 @@ public class Car {
     private Point location;
     private Proprietary proprietary;
     private String licensePlate;
+    private int liability;
 
     public Car() {
         this.mediumSpeed = 0;
@@ -29,10 +30,11 @@ public class Car {
         this.location = new Point(-1, -1);
         this.proprietary = new Proprietary();
         this.licensePlate = "N/A";
+        this.liability = -1;
     }
 
     public Car(int mediumSpeed, double priceKm, List<Rental> pastRents, int rating, Point location,
-               Proprietary proprietary, String licensePlate) {
+               Proprietary proprietary, String licensePlate, int liability) {
         this.mediumSpeed = mediumSpeed;
         this.priceKm = priceKm;
         this.pastRents = pastRents;
@@ -40,6 +42,7 @@ public class Car {
         this.location = location;
         this.proprietary = proprietary;
         this.licensePlate = licensePlate;
+        this.liability = liability;
     }
 
     public Car(Car car) {
@@ -50,6 +53,7 @@ public class Car {
         this.location = car.getLocation();
         this.proprietary = car.getProprietary();
         this.licensePlate = car.getLicensePlate();
+        this.liability = car.getLiability();
     }
 
     public int getMediumSpeed() {
@@ -108,6 +112,14 @@ public class Car {
         this.licensePlate = licensePlate;
     }
 
+    public int getLiability() {
+        return liability;
+    }
+
+    public void setLiability(int liability) {
+        this.liability = liability;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -124,7 +136,7 @@ public class Car {
 
     @Override
     public int hashCode() {
-        return Objects.hash(mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate);
+        return Objects.hash(mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate, liability);
     }
 
     @Override
@@ -132,11 +144,12 @@ public class Car {
         return "Car{" +
                 "mediumSpeed=" + mediumSpeed +
                 ", priceKm=" + priceKm +
-                ", pastRents=" + pastRents.toString() +
+                ", pastRents=" + pastRents +
                 ", rating=" + rating +
                 ", location=" + location +
                 ", proprietary=" + proprietary +
                 ", licensePlate='" + licensePlate + '\'' +
+                ", liability=" + liability +
                 '}';
     }
 
@@ -149,6 +162,7 @@ public class Car {
         newCar.setLocation(this.location);
         newCar.setProprietary(this.proprietary);
         newCar.setLicensePlate(this.licensePlate);
+        newCar.setLiability(this.liability);
         return newCar;
     }
 }

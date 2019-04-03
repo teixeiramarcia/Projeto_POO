@@ -24,9 +24,9 @@ public class ElectricCar extends Car {
     }
 
     public ElectricCar(int mediumSpeed, double priceKm, List<Rental> pastRents, int rating, Point location,
-                       Proprietary proprietary, String licensePlate, double currentBattery, double batteryConsumeKM,
+                       Proprietary proprietary, String licensePlate, int liability, double currentBattery, double batteryConsumeKM,
                        double totalBattery) {
-        super(mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate);
+        super(mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate, liability);
         this.currentBattery = currentBattery;
         this.batteryConsumeKM = batteryConsumeKM;
         this.totalBattery = totalBattery;
