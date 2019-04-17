@@ -149,4 +149,16 @@ public class HybridCar extends Car {
     public double getTotalAutonomy() {
         return (totalFuel * fuelConsumeKM) + (totalBattery * batteryConsumeKM);
     }
+
+    public void decreasePower (double dist){
+        double batteryNeeded = dist * batteryConsumeKM;
+        if (batteryNeeded > currentBattery){
+            double distLeft = dist - (currentBattery/batteryConsumeKM);
+            setCurrentBattery(0);
+            double fuelNeeded = distLeft * fuelConsumeKM;
+            setCurrentFuel(currentFuel - fuelNeeded);
+        } else {
+            setCurrentBattery(currentBattery - batteryNeeded);
+        }
+    }
 }

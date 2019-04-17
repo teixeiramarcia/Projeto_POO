@@ -46,7 +46,6 @@ public class Service {
      * @param start
      * @param finish
      * @param car
-     * @return
      */
     public double canMakeTrip(Point start, Point finish, Car car) {
         double distance = distance(start, finish);
@@ -137,5 +136,24 @@ public class Service {
 
     public double penalty (int penalty, double time){
         return (((5-penalty) * 0.1) * time);
+    }
+
+    public void waitingForNewRental (Rental lastRental){
+        Car car = lastRental.getRentedCar();
+        car.setLocation(lastRental.getFinalPos());
+    }
+
+    public void updateCarPower (Rental rented){
+        Point posInit = rented.getInitialPosCar();
+        Point posFinal = rented.getFinalPos();
+        double dist = distance(posInit, posFinal);
+        Car car = rented.getRentedCar();
+        if(car.getClass().equals(ElectricCar.class)){
+            ((ElectricCar) car).decreaseBattery(dist);
+        } else if (car.getClass().equals(FuelCar.class)){
+            ((FuelCar) car).decreaseFuel(dist);
+        } else if (car.getClass().equals(HybridCar.class)){
+            ((HybridCar) car).decreasePower(dist);
+        }
     }
 }

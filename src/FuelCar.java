@@ -104,4 +104,9 @@ public class FuelCar extends Car {
     public double getTotalAutonomy() {
         return totalFuel * fuelConsumeKM;
     }
+
+    public void decreaseFuel (double dist){
+        double fuelAfterTrip = currentFuel -(dist * fuelConsumeKM);
+        setCurrentFuel(fuelAfterTrip);
+    }
 }
