@@ -92,9 +92,9 @@ public class WeatherStatus {
     }
 
     /**
-     * Devolve o valor de hash baseado em (...)
+     * Devolve o valor de hash baseado no valor das variáveis de classe
      *
-     * @return valor de ash
+     * @return valor de hash
      */
     @Override
     public int hashCode() {

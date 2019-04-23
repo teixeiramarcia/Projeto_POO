@@ -132,9 +132,9 @@ public class ElectricCar extends Car {
     }
 
     /**
-     * Devolve o valor de ash baseado em (...)
+     * Devolve o valor de hash baseado em (...)
      *
-     * @return valor de ash
+     * @return valor de hash
      */
     @Override
     public int hashCode() {

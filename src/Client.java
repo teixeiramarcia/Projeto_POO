@@ -131,7 +131,7 @@ public class Client extends User {
     /**
      * Devolve o valor de hash baseado em (...)
      *
-     * @return valor de ash
+     * @return valor de hash
      */
     @Override
     public int hashCode() {
