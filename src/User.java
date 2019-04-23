@@ -226,8 +226,8 @@ public class User {
         List<Rental> rentedBetweenList = new ArrayList<>();
         for (Rental rental : rentals) {
             LocalDateTime rentalDate = rental.getRentalDate();
-            if ((rentalDate.isAfter(initialDate) && rentalDate.isBefore(finalDate)) || rentalDate.equals(initialDate)
-                    || rentalDate.equals(finalDate)) {
+            if ((rentalDate.isAfter(initialDate) && rentalDate.isBefore(finalDate)) || rentalDate.isEqual(initialDate)
+                    || rentalDate.isEqual(finalDate)) {
                 rentedBetweenList.add(rental);
             }
         }

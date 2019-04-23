@@ -36,7 +36,7 @@ public class HybridCar extends Car {
      * Construtor parametrizado
      *
      * @param mediumSpeed      velocidade média do carro
-     * @param priceKm          preço médio por kilómetro
+     * @param priceKm          preço médio por quilómetro
      * @param pastRents        listagem de arrendamentos anteriores do carro
      * @param rating           avaliação atual do carro
      * @param location         localização atual do carro
@@ -45,8 +45,8 @@ public class HybridCar extends Car {
      * @param liability        fiabilidade do carro.
      * @param currentFuel      combustível atual do carro
      * @param currentBattery   bateria atual do carro
-     * @param fuelConsumeKM    consumo médio de combustível do carro por kilómetro
-     * @param batteryConsumeKM consumo médio de bateria do carro por kilómetro
+     * @param fuelConsumeKM    consumo médio de combustível do carro por quilómetro
+     * @param batteryConsumeKM consumo médio de bateria do carro por quilómetro
      * @param totalBattery     bateria total do carro
      * @param totalFuel        capacidade total de combustível do carro
      */
@@ -112,36 +112,36 @@ public class HybridCar extends Car {
     }
 
     /**
-     * Devolve o consumo médio de combustível do carro por kilómetro.
+     * Devolve o consumo médio de combustível do carro por quilómetro.
      *
-     * @return consumo médio de combustível por kilómetro
+     * @return consumo médio de combustível por quilómetro
      */
     public double getFuelConsumeKM() {
         return fuelConsumeKM;
     }
 
     /**
-     * Atribui ao carro o consumo médio de combustível por kilómetro.
+     * Atribui ao carro o consumo médio de combustível por quilómetro.
      *
-     * @param fuelConsumeKM consumo médio de combustível por kilómetro
+     * @param fuelConsumeKM consumo médio de combustível por quilómetro
      */
     public void setFuelConsumeKM(double fuelConsumeKM) {
         this.fuelConsumeKM = fuelConsumeKM;
     }
 
     /**
-     * Devolve o consumo médio de bateria por kilómetro do carro.
+     * Devolve o consumo médio de bateria por quilómetro do carro.
      *
-     * @return consumo médio de bateria por kilómetro
+     * @return consumo médio de bateria por quilómetro
      */
     public double getBatteryConsumeKM() {
         return batteryConsumeKM;
     }
 
     /**
-     * Atribui ao carro o consumo médio de bateria por kilómetro.
+     * Atribui ao carro o consumo médio de bateria por quilómetro.
      *
-     * @param batteryConsumeKM consumo médio de bateria por kilómetro
+     * @param batteryConsumeKM consumo médio de bateria por quilómetro
      */
     public void setBatteryConsumeKM(double batteryConsumeKM) {
         this.batteryConsumeKM = batteryConsumeKM;

@@ -40,7 +40,7 @@ public class Car {
      * Construtor parametrizado.
      *
      * @param mediumSpeed  velocidade média do carro
-     * @param priceKm      preço por kilómetro de viagem do carro
+     * @param priceKm      preço por quilómetro de viagem do carro
      * @param pastRents    listagem dos arrendamentos anteriores do carro
      * @param rating       avaliação do carro
      * @param location     localização atual do carro
@@ -93,18 +93,18 @@ public class Car {
     }
 
     /**
-     * Devolve o preço por kilómetro de viagem do carro.
+     * Devolve o preço por quilómetro de viagem do carro.
      *
-     * @return preço por kilómetro de viagem
+     * @return preço por quilómetro de viagem
      */
     public double getPriceKm() {
         return priceKm;
     }
 
     /**
-     * Atribui ao carro um preço por kilómetro de viagem.
+     * Atribui ao carro um preço por quilómetro de viagem.
      *
-     * @param priceKm preço por kilómetro de viagem
+     * @param priceKm preço por quilómetro de viagem
      */
     public void setPriceKm(double priceKm) {
         this.priceKm = priceKm;

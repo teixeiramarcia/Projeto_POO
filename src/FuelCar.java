@@ -30,7 +30,7 @@ public class FuelCar extends Car {
      * Construtor parametrizado.
      *
      * @param mediumSpeed   velocidade média do carro
-     * @param priceKm       preço médio por kilómetro
+     * @param priceKm       preço médio por quilómetro
      * @param pastRents     listagem dos arrendamentos anteriores do carro
      * @param rating        avaliação do carro
      * @param location      localização atual do carro
@@ -38,7 +38,7 @@ public class FuelCar extends Car {
      * @param licensePlate  matrícula do carro
      * @param liability     fiabilidade do carro
      * @param currentFuel   combustível atual do carro
-     * @param fuelConsumeKM consumo médio de combustível por kilómetro
+     * @param fuelConsumeKM consumo médio de combustível por quilómetro
      * @param totalFuel     capacidade total de combustível do carro
      */
     public FuelCar(int mediumSpeed, double priceKm, List<Rental> pastRents, int rating, Point location,
@@ -79,18 +79,18 @@ public class FuelCar extends Car {
     }
 
     /**
-     * Devolve o consumo médio de combustível por kilómetro do carro.
+     * Devolve o consumo médio de combustível por quilómetro do carro.
      *
-     * @return consumo médio de combustível por kilómetro
+     * @return consumo médio de combustível por quilómetro
      */
     public double getFuelConsumeKM() {
         return fuelConsumeKM;
     }
 
     /**
-     * Atribui ao carro o consumo médio de combustível por kilómetro.
+     * Atribui ao carro o consumo médio de combustível por quilómetro.
      *
-     * @param fuelConsumeKM consumo médio de combustível por kilómetro
+     * @param fuelConsumeKM consumo médio de combustível por quilómetro
      */
     public void setFuelConsumeKM(double fuelConsumeKM) {
         this.fuelConsumeKM = fuelConsumeKM;

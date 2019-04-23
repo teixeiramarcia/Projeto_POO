@@ -31,7 +31,7 @@ public class ElectricCar extends Car {
      * Construtor parametrizado.
      *
      * @param mediumSpeed      velocidade média do carro
-     * @param priceKm          preço médio por kilómetro
+     * @param priceKm          preço médio por quilómetro
      * @param pastRents        lista dos arrendamentos anteriores
      * @param rating           classificação do carro
      * @param location         localização atual do carro
@@ -39,7 +39,7 @@ public class ElectricCar extends Car {
      * @param licensePlate     matrícula do carro
      * @param liability        fiabilidade do carro
      * @param currentBattery   bateria atual do carro
-     * @param batteryConsumeKM consumo médio de bateria por kilómetro
+     * @param batteryConsumeKM consumo médio de bateria por quilómetro
      * @param totalBattery     bateria total do carro
      */
     public ElectricCar(int mediumSpeed, double priceKm, List<Rental> pastRents, int rating, Point location,
@@ -80,18 +80,18 @@ public class ElectricCar extends Car {
     }
 
     /**
-     * Devolve o consumo médio por kilómetro de bateria do carro.
+     * Devolve o consumo médio por quilómetro de bateria do carro.
      *
-     * @return consumo médio de bateria por kilómetro
+     * @return consumo médio de bateria por quilómetro
      */
     public double getBatteryConsumeKM() {
         return batteryConsumeKM;
     }
 
     /**
-     * Atribui um consumo médio de bateria por kilómetro ao carro.
+     * Atribui um consumo médio de bateria por quilómetro ao carro.
      *
-     * @param batteryConsumeKM consumo médio de bateria por kilómetro
+     * @param batteryConsumeKM consumo médio de bateria por quilómetro
      */
     public void setBatteryConsumeKM(double batteryConsumeKM) {
         this.batteryConsumeKM = batteryConsumeKM;
