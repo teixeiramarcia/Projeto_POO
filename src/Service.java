@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Write a description of class Service here.
@@ -12,9 +14,10 @@ import java.util.List;
  */
 
 public class Service {
-    private List<FuelCar> fuelCars;
-    private List<ElectricCar> electricCars;
-    private List<HybridCar> hybridCars;
+    private Map<String,FuelCar> fuelCars;
+    private Map<String,ElectricCar> electricCars;
+    private Map<String,HybridCar> hybridCars;
+    private Map<String,Client> allClients;
 
     /**
      * Devolve a listagem de Carros a Combustível que o serviço possui.
@@ -22,7 +25,8 @@ public class Service {
      * @return lista de Carros a Combustível
      */
     public List<FuelCar> getFuelCars() {
-        return fuelCars;
+
+        return new ArrayList<>(fuelCars.values());
     }
 
     /**
@@ -30,7 +34,7 @@ public class Service {
      *
      * @param fuelCars lista de Carros a Combustível
      */
-    public void setFuelCars(List<FuelCar> fuelCars) {
+    public void setFuelCars(Map<String,FuelCar> fuelCars) {
         this.fuelCars = fuelCars;
     }
 
@@ -40,7 +44,7 @@ public class Service {
      * @return lista de Carros Elétricos
      */
     public List<ElectricCar> getElectricCars() {
-        return electricCars;
+        return new ArrayList<>(electricCars.values());
     }
 
     /**
@@ -48,7 +52,7 @@ public class Service {
      *
      * @param electricCars lista de Carros Elétricos
      */
-    public void setElectricCars(List<ElectricCar> electricCars) {
+    public void setElectricCars(Map<String,ElectricCar> electricCars) {
         this.electricCars = electricCars;
     }
 
@@ -58,7 +62,7 @@ public class Service {
      * @return lista de Carros Híbridos
      */
     public List<HybridCar> getHybridCars() {
-        return hybridCars;
+        return new ArrayList<>(hybridCars.values());
     }
 
     /**
@@ -66,7 +70,7 @@ public class Service {
      *
      * @param hybridCars lista de Carros Híbridos
      */
-    public void setHybridCars(List<HybridCar> hybridCars) {
+    public void setHybridCars(Map<String,HybridCar> hybridCars) {
         this.hybridCars = hybridCars;
     }
 

@@ -216,7 +216,7 @@ public class User {
      * @param finalDate   data até à qual se seleciona os alugueres.
      * @return devlove uma lista com os alugueres feitos entre as datas disponibilizadas.
      */
-    public java.util.List<Rental> rentalsBetweenDates(LocalDateTime initialDate, LocalDateTime finalDate) {
+    public List<Rental> rentalsBetweenDates(LocalDateTime initialDate, LocalDateTime finalDate) {
         List<Rental> rentals;
         if (this.getClass().equals(Client.class)) {
             rentals = ((Client) this).getRentals();
