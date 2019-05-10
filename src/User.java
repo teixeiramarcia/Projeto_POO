@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -70,16 +69,16 @@ public class User {
      *
      * @return nome do utilizador
      */
-    public String getName(){
+    public String getName() {
         return name;
     }
 
     /**
      * Atribui um nome ao utilizador
      *
-     * @param  name nome do utilizador
+     * @param name nome do utilizador
      */
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -165,14 +164,13 @@ public class User {
     }
 
     /**
-     * Atribui um nif ao utilizador
+     * Atribui um número de identificação fiscal ao utilizador
      *
      * @param nif número de identificação fiscal do utilizador
      */
-    public void setNif(String nif){
+    public void setNif(String nif) {
         this.nif = nif;
     }
-
 
     /**
      * Método que verifica se dois utilizadores são iguais.

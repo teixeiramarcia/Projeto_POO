@@ -14,10 +14,10 @@ import java.util.Map;
  */
 
 public class Service {
-    private Map<String,FuelCar> fuelCars;
-    private Map<String,ElectricCar> electricCars;
-    private Map<String,HybridCar> hybridCars;
-    private Map<String,Client> allClients;
+    private Map<String, FuelCar> fuelCars;
+    private Map<String, ElectricCar> electricCars;
+    private Map<String, HybridCar> hybridCars;
+    private Map<String, Client> allClients;
 
     /**
      * Devolve a listagem de Carros a Combustível que o serviço possui.
@@ -34,7 +34,7 @@ public class Service {
      *
      * @param fuelCars lista de Carros a Combustível
      */
-    public void setFuelCars(Map<String,FuelCar> fuelCars) {
+    public void setFuelCars(Map<String, FuelCar> fuelCars) {
         this.fuelCars = fuelCars;
     }
 
@@ -52,7 +52,7 @@ public class Service {
      *
      * @param electricCars lista de Carros Elétricos
      */
-    public void setElectricCars(Map<String,ElectricCar> electricCars) {
+    public void setElectricCars(Map<String, ElectricCar> electricCars) {
         this.electricCars = electricCars;
     }
 
@@ -70,7 +70,7 @@ public class Service {
      *
      * @param hybridCars lista de Carros Híbridos
      */
-    public void setHybridCars(Map<String,HybridCar> hybridCars) {
+    public void setHybridCars(Map<String, HybridCar> hybridCars) {
         this.hybridCars = hybridCars;
     }
 
