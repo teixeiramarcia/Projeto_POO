@@ -34,14 +34,13 @@ public class Proprietary extends User {
      * @param password  password do proprietário
      * @param address   morada do proprietário
      * @param birthDate data de nascimento do proprietário
-     * @param location  localização atual do proprietário
      * @param cars      listagem de carros que o proprietário possui
      * @param rating    avaliação do proprietário
      * @param rented    listagem de arrendamentos feitos até ao momento dos carros do proprietário
      */
-    public Proprietary(String email, String password, String address, String birthDate, Point location, List<Car> cars,
+    public Proprietary(String name, String email, String password, String address, String birthDate, String nif, List<Car> cars,
                        int rating, List<Rental> rented) {
-        super(email, password, address, birthDate, location);
+        super(name, email, password, address, birthDate, nif);
         this.cars = cars;
         this.rating = rating;
         this.rented = rented;

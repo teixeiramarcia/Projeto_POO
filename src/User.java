@@ -15,49 +15,72 @@ import java.util.Objects;
  */
 
 public class User {
+    private String name;
     private String email;
     private String password;
     private String address;
     private LocalDate birthDate;
-    private Point location;
+    private String nif;
 
     /**
      * Construtor por omissão.
      */
     public User() {
+        this.name = "N/A";
         this.email = "N/A";
         this.password = "N/A";
         this.address = "N/A";
         this.birthDate = null;
-        this.location = new Point(-1, -1);
+        this.nif = "N/A";
     }
 
     /**
      * Construtor parametrizado.
      *
+     * @param name      nome do utilizador
      * @param email     email do utilizador (credencial de acesso ao espaço pessoal)
      * @param password  password do utilizador
      * @param address   morada do utilizador
      * @param birthDate data de nascimento do utilizador
-     * @param location  localização atual do utilizador
+     * @param nif       número de identificação fiscal do utilizador
      */
-    public User(String email, String password, String address, String birthDate, Point location) {
+    public User(String name, String email, String password, String address, String birthDate, String nif) {
+        this.name = name;
         this.email = email;
         this.password = password;
         this.address = address;
         this.birthDate = LocalDate.parse(birthDate);
-        this.location = location;
+        this.nif = nif;
     }
 
     /**
      * Construtor cópia.
      */
     public User(User user) {
+        this.name = user.getName();
         this.email = user.getEmail();
         this.password = user.getPassword();
         this.address = user.getAddress();
         this.birthDate = user.getBirthDate();
-        this.location = user.getLocation();
+        this.nif = user.getNif();
+    }
+
+    /**
+     * Devolve o nome do utilizador.
+     *
+     * @return nome do utilizador
+     */
+    public String getName(){
+        return name;
+    }
+
+    /**
+     * Atribui um nome ao utilizador
+     *
+     * @param  name nome do utilizador
+     */
+    public void setName(String name){
+        this.name = name;
     }
 
     /**
@@ -133,22 +156,23 @@ public class User {
     }
 
     /**
-     * Devolve a localização atual do utilizador.
+     * Devolve o número de identificação fiscal do utilizador.
      *
-     * @return localização atual do utilizador
+     * @return número de identificação fiscal do utilizador
      */
-    public Point getLocation() {
-        return location;
+    public String getNif() {
+        return nif;
     }
 
     /**
-     * Atribui ao utilizador uma posição atual.
+     * Atribui um nif ao utilizador
      *
-     * @param location posição atual do utilizador
+     * @param nif número de identificação fiscal do utilizador
      */
-    public void setLocation(Point location) {
-        this.location = location;
+    public void setNif(String nif){
+        this.nif = nif;
     }
+
 
     /**
      * Método que verifica se dois utilizadores são iguais.
@@ -161,11 +185,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(email, user.email) &&
+        return Objects.equals(name, user.name) &&
+                Objects.equals(email, user.email) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(address, user.address) &&
                 Objects.equals(birthDate, user.birthDate) &&
-                Objects.equals(location, user.location);
+                Objects.equals(nif, user.nif);
     }
 
     /**
@@ -175,7 +200,7 @@ public class User {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(email, password, address, birthDate, location);
+        return Objects.hash(name, email, password, address, birthDate, nif);
     }
 
     /**
@@ -186,11 +211,12 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "email='" + email + '\'' +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", address='" + address + '\'' +
-                ", birthDate=" + birthDate +
-                ", location=" + location +
+                ", birthDate=" + birthDate.toString() +
+                ", nif='" + nif + '\'' +
                 '}';
     }
 
@@ -201,11 +227,12 @@ public class User {
      */
     public User clone() {
         User newUser = new User();
+        newUser.setName(this.name);
         newUser.setEmail(this.email);
         newUser.setPassword(this.password);
         newUser.setAddress(this.address);
         newUser.setBirthDate(this.birthDate);
-        newUser.setLocation(this.location);
+        newUser.setNif(this.nif);
         return newUser;
     }
 

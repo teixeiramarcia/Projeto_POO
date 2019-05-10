@@ -13,6 +13,7 @@ import java.util.Objects;
  */
 
 public class Client extends User {
+    private Point location;
     private List<Rental> rentals;
     private int rating;
     private int drivingSkill;
@@ -22,6 +23,7 @@ public class Client extends User {
      */
     public Client() {
         super();
+        this.location = null;
         this.rentals = new ArrayList<>();
         this.rating = -1;
         this.drivingSkill = -1;
@@ -34,14 +36,16 @@ public class Client extends User {
      * @param password     password do cliente
      * @param address      morada do cliente
      * @param birthDate    data de nascimento do cliente
+     * @param nif          número de identificação fiscal do cliente
      * @param location     localização atual do cliente
      * @param rentals      listagem de arrendamentos passados feitos pelo cliente
      * @param rating       avaliação do cliente
      * @param drivingSkill destreza de condução do cliente
      */
-    public Client(String email, String password, String address, String birthDate, Point location,
+    public Client(String name, String email, String password, String address, String birthDate, String nif, Point location,
                   List<Rental> rentals, int rating, int drivingSkill) {
-        super(email, password, address, birthDate, location);
+        super(name, email, password, address, birthDate, nif);
+        this.location = location;
         this.rentals = rentals;
         this.rating = rating;
         this.drivingSkill = drivingSkill;
@@ -52,9 +56,28 @@ public class Client extends User {
      */
     public Client(Client client) {
         super(client);
+        this.location = client.getLocation();
         this.rentals = client.getRentals();
         this.rating = client.getRating();
         this.drivingSkill = client.getDrivingSkill();
+    }
+
+    /**
+     * Devolve a localização atual do cliente.
+     *
+     * @return localização atual do cliente
+     */
+    public Point getLocation() {
+        return location;
+    }
+
+    /**
+     * Atribui ao cliente uma posição atual.
+     *
+     * @param location posição atual do cliente
+     */
+    public void setLocation(Point location) {
+        this.location = location;
     }
 
     /**
@@ -125,6 +148,7 @@ public class Client extends User {
         Client client = (Client) o;
         return rating == client.rating &&
                 drivingSkill == client.drivingSkill &&
+                Objects.equals(location, client.location) &&
                 Objects.equals(rentals, client.rentals);
     }
 
@@ -135,7 +159,7 @@ public class Client extends User {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), rentals, rating, drivingSkill);
+        return Objects.hash(super.hashCode(), location, rentals, rating, drivingSkill);
     }
 
     /**
@@ -146,8 +170,8 @@ public class Client extends User {
     @Override
     public String toString() {
         return "Client{" +
-                super.toString() +
-                ", rentals=" + rentals +
+                "location=" + location.toString() +
+                ", rentals=" + rentals.toString() +
                 ", rating=" + rating +
                 ", drivingSkill=" + drivingSkill +
                 '}';
@@ -160,6 +184,7 @@ public class Client extends User {
      */
     public Client clone() {
         Client newClient = (Client) super.clone();
+        newClient.setLocation(this.location);
         newClient.setRentals(this.rentals);
         newClient.setRating(this.rating);
         newClient.setDrivingSkill(this.drivingSkill);
