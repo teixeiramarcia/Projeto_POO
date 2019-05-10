@@ -42,10 +42,10 @@ public class ElectricCar extends Car {
      * @param batteryConsumeKM consumo médio de bateria por quilómetro
      * @param totalBattery     bateria total do carro
      */
-    public ElectricCar(int mediumSpeed, double priceKm, List<Rental> pastRents, int rating, Point location,
+    public ElectricCar(String brand, int mediumSpeed, double priceKm, List<Rental> pastRents, int rating, Point location,
                        Proprietary proprietary, String licensePlate, int liability, double currentBattery,
                        double batteryConsumeKM, double totalBattery) {
-        super(mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate, liability);
+        super(brand, mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate, liability);
         this.currentBattery = currentBattery;
         this.batteryConsumeKM = batteryConsumeKM;
         this.totalBattery = totalBattery;

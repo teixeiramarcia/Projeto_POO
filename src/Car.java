@@ -13,6 +13,7 @@ import java.util.Objects;
  */
 
 public class Car {
+    private String brand;
     private int mediumSpeed;
     private double priceKm;
     private List<Rental> pastRents;
@@ -26,6 +27,7 @@ public class Car {
      * Construtor por omissão.
      */
     public Car() {
+        this.brand = "N/A";
         this.mediumSpeed = 0;
         this.priceKm = 0;
         this.pastRents = new ArrayList<>();
@@ -39,6 +41,7 @@ public class Car {
     /**
      * Construtor parametrizado.
      *
+     * @param brand        marca do carro
      * @param mediumSpeed  velocidade média do carro
      * @param priceKm      preço por quilómetro de viagem do carro
      * @param pastRents    listagem dos arrendamentos anteriores do carro
@@ -48,8 +51,9 @@ public class Car {
      * @param licensePlate matrícula do carro
      * @param liability    fiabilidade do carro
      */
-    public Car(int mediumSpeed, double priceKm, List<Rental> pastRents, int rating, Point location,
+    public Car(String brand, int mediumSpeed, double priceKm, List<Rental> pastRents, int rating, Point location,
                Proprietary proprietary, String licensePlate, int liability) {
+        this.brand = brand;
         this.mediumSpeed = mediumSpeed;
         this.priceKm = priceKm;
         this.pastRents = pastRents;
@@ -64,6 +68,7 @@ public class Car {
      * Construtor cópia
      */
     public Car(Car car) {
+        this.brand = car.getBrand();
         this.mediumSpeed = car.getMediumSpeed();
         this.priceKm = car.getPriceKm();
         this.pastRents = car.getPastRents();
@@ -72,6 +77,24 @@ public class Car {
         this.proprietary = car.getProprietary();
         this.licensePlate = car.getLicensePlate();
         this.liability = car.getLiability();
+    }
+
+    /**
+     * Devolve a marca do carro.
+     *
+     * @return marca do carro
+     */
+    public String getBrand() {
+        return brand;
+    }
+
+    /**
+     * Atribui ao carro uma marca.
+     *
+     * @param brand marca
+     */
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     /**
@@ -232,6 +255,8 @@ public class Car {
         return mediumSpeed == car.mediumSpeed &&
                 Double.compare(car.priceKm, priceKm) == 0 &&
                 rating == car.rating &&
+                liability == car.liability &&
+                Objects.equals(brand, car.brand) &&
                 Objects.equals(pastRents, car.pastRents) &&
                 Objects.equals(location, car.location) &&
                 Objects.equals(proprietary, car.proprietary) &&
@@ -245,7 +270,7 @@ public class Car {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate, liability);
+        return Objects.hash(brand, mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate, liability);
     }
 
     /**
@@ -256,11 +281,12 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "mediumSpeed=" + mediumSpeed +
+                "brand='" + brand + '\'' +
+                ", mediumSpeed=" + mediumSpeed +
                 ", priceKm=" + priceKm +
-                ", pastRents=" + pastRents +
+                ", pastRents=" + pastRents.toString() +
                 ", rating=" + rating +
-                ", location=" + location +
+                ", location=" + location.toString() +
                 ", proprietary=" + proprietary +
                 ", licensePlate='" + licensePlate + '\'' +
                 ", liability=" + liability +

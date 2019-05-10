@@ -41,10 +41,10 @@ public class FuelCar extends Car {
      * @param fuelConsumeKM consumo médio de combustível por quilómetro
      * @param totalFuel     capacidade total de combustível do carro
      */
-    public FuelCar(int mediumSpeed, double priceKm, List<Rental> pastRents, int rating, Point location,
+    public FuelCar(String brand, int mediumSpeed, double priceKm, List<Rental> pastRents, int rating, Point location,
                    Proprietary proprietary, String licensePlate, int liability, double currentFuel, double fuelConsumeKM,
                    double totalFuel) {
-        super(mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate, liability);
+        super(brand, mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate, liability);
         this.currentFuel = currentFuel;
         this.fuelConsumeKM = fuelConsumeKM;
         this.totalFuel = totalFuel;
