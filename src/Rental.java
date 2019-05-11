@@ -1,4 +1,4 @@
-import java.awt.*;
+import java.awt.geom.Point2D;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -14,8 +14,8 @@ import java.util.Objects;
 public class Rental {
     private Car rentedCar;
     private Client client;
-    private Point initialPosCar;
-    private Point finalPos;
+    private Point2D.Double initialPosCar;
+    private Point2D.Double finalPos;
     private String rentalStatus;
     private LocalDateTime rentalDate;
     private LocalDateTime useStartDate;
@@ -28,8 +28,8 @@ public class Rental {
     public Rental() {
         this.rentedCar = new Car();
         this.client = new Client();
-        this.initialPosCar = new Point(-1, -1);
-        this.finalPos = new Point(-1, 1);
+        this.initialPosCar = null;
+        this.finalPos = null;
         this.rentalStatus = "N/A";
         this.rentalDate = null;
         this.useStartDate = null;
@@ -50,8 +50,9 @@ public class Rental {
      * @param useFinishDate data de fim de uso do carro alugado
      * @param rating        avaliação atribuída ao aluguer do carro
      */
-    public Rental(Car rentedCar, Client client, Point initialPosCar, Point finalPos, String rentalStatus,
-                  LocalDateTime rentalDate, LocalDateTime useStartDate, LocalDateTime useFinishDate, int rating) {
+    public Rental(Car rentedCar, Client client, Point2D.Double initialPosCar, Point2D.Double finalPos,
+                  String rentalStatus, LocalDateTime rentalDate, LocalDateTime useStartDate,
+                  LocalDateTime useFinishDate, int rating) {
         this.rentedCar = rentedCar;
         this.client = client;
         this.initialPosCar = initialPosCar;
@@ -119,7 +120,7 @@ public class Rental {
      *
      * @return posição inicial do carro alugado
      */
-    public Point getInitialPosCar() {
+    public Point2D.Double getInitialPosCar() {
         return initialPosCar;
     }
 
@@ -128,7 +129,7 @@ public class Rental {
      *
      * @param initialPosCar posição do carro alugado
      */
-    public void setInitialPosCar(Point initialPosCar) {
+    public void setInitialPosCar(Point2D.Double initialPosCar) {
         this.initialPosCar = initialPosCar;
     }
 
@@ -137,7 +138,7 @@ public class Rental {
      *
      * @return posição final do carro alugado após a viagem
      */
-    public Point getFinalPos() {
+    public Point2D.Double getFinalPos() {
         return finalPos;
     }
 
@@ -146,7 +147,7 @@ public class Rental {
      *
      * @param finalPos posição final do carro após a viagem
      */
-    public void setFinalPos(Point finalPos) {
+    public void setFinalPos(Point2D.Double finalPos) {
         this.finalPos = finalPos;
     }
 

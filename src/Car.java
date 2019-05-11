@@ -1,4 +1,4 @@
-import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -16,9 +16,10 @@ public class Car {
     private String brand;
     private int mediumSpeed;
     private double priceKm;
+    private double consumeKm;
     private List<Rental> pastRents;
     private int rating;
-    private Point location;
+    private Point2D.Double location;
     private Proprietary proprietary;
     private String licensePlate;
     private int liability;
@@ -30,9 +31,10 @@ public class Car {
         this.brand = "N/A";
         this.mediumSpeed = 0;
         this.priceKm = 0;
+        this.consumeKm = 0;
         this.pastRents = new ArrayList<>();
         this.rating = -1;
-        this.location = new Point(-1, -1);
+        this.location = new Point2D.Double(-1, -1);
         this.proprietary = new Proprietary();
         this.licensePlate = "N/A";
         this.liability = -1;
@@ -44,6 +46,7 @@ public class Car {
      * @param brand        marca do carro
      * @param mediumSpeed  velocidade média do carro
      * @param priceKm      preço por quilómetro de viagem do carro
+     * @param consumeKm    consumo por kilómetro
      * @param pastRents    listagem dos arrendamentos anteriores do carro
      * @param rating       avaliação do carro
      * @param location     localização atual do carro
@@ -51,11 +54,12 @@ public class Car {
      * @param licensePlate matrícula do carro
      * @param liability    fiabilidade do carro
      */
-    public Car(String brand, int mediumSpeed, double priceKm, List<Rental> pastRents, int rating, Point location,
-               Proprietary proprietary, String licensePlate, int liability) {
+    public Car(String brand, int mediumSpeed, double priceKm, double consumeKm, List<Rental> pastRents, int rating,
+               Point2D.Double location, Proprietary proprietary, String licensePlate, int liability) {
         this.brand = brand;
         this.mediumSpeed = mediumSpeed;
         this.priceKm = priceKm;
+        this.consumeKm = consumeKm;
         this.pastRents = pastRents;
         this.rating = rating;
         this.location = location;
@@ -71,6 +75,7 @@ public class Car {
         this.brand = car.getBrand();
         this.mediumSpeed = car.getMediumSpeed();
         this.priceKm = car.getPriceKm();
+        this.consumeKm = car.getConsumeKm();
         this.pastRents = car.getPastRents();
         this.rating = car.getRating();
         this.location = car.getLocation();
@@ -134,6 +139,24 @@ public class Car {
     }
 
     /**
+     * Devolve o consumo por quilómetro de viagem do carro.
+     *
+     * @return consumo por quilómetro de viagem
+     */
+    public double getConsumeKm() {
+        return consumeKm;
+    }
+
+    /**
+     * Atribui ao carro um consumo por quilómetro de viagem.
+     *
+     * @param consumeKm consumo por quilómetro de viagem
+     */
+    public void setConsumeKm(double consumeKm) {
+        this.consumeKm = consumeKm;
+    }
+
+    /**
      * Devolve uma listagem dos arrendamentos anteriores do carro.
      *
      * @return arrendamentos anteriores do carro
@@ -174,7 +197,7 @@ public class Car {
      *
      * @return localização do carro
      */
-    public Point getLocation() {
+    public Point2D.Double getLocation() {
         return location;
     }
 
@@ -183,7 +206,7 @@ public class Car {
      *
      * @param location localização do carro
      */
-    public void setLocation(Point location) {
+    public void setLocation(Point2D.Double location) {
         this.location = location;
     }
 
@@ -254,6 +277,7 @@ public class Car {
         Car car = (Car) o;
         return mediumSpeed == car.mediumSpeed &&
                 Double.compare(car.priceKm, priceKm) == 0 &&
+                Double.compare(car.priceKm, priceKm) == 0 &&
                 rating == car.rating &&
                 liability == car.liability &&
                 Objects.equals(brand, car.brand) &&
@@ -270,7 +294,7 @@ public class Car {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(brand, mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate, liability);
+        return Objects.hash(brand, mediumSpeed, priceKm, consumeKm, pastRents, rating, location, proprietary, licensePlate, liability);
     }
 
     /**
@@ -284,6 +308,7 @@ public class Car {
                 "brand='" + brand + '\'' +
                 ", mediumSpeed=" + mediumSpeed +
                 ", priceKm=" + priceKm +
+                ", consumekm" + consumeKm +
                 ", pastRents=" + pastRents.toString() +
                 ", rating=" + rating +
                 ", location=" + location.toString() +
@@ -302,6 +327,7 @@ public class Car {
         Car newCar = new Car();
         newCar.setMediumSpeed(this.mediumSpeed);
         newCar.setPriceKm(this.priceKm);
+        newCar.setConsumeKm(this.consumeKm);
         newCar.setPastRents(this.pastRents);
         newCar.setRating(this.rating);
         newCar.setLocation(this.location);
@@ -320,8 +346,8 @@ public class Car {
     public double getCarProfitBetweenDates(List<Rental> pastRents) {
         double profit = 0;
         for (Rental rental : pastRents) {
-            Point initPos = rental.getInitialPosCar();
-            Point finalPos = rental.getFinalPos();
+            Point2D.Double initPos = rental.getInitialPosCar();
+            Point2D.Double finalPos = rental.getFinalPos();
             double dist = Service.distance(initPos, finalPos);
             profit = +Service.tripCost(dist, rental.getRentedCar());
         }

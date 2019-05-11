@@ -1,4 +1,4 @@
-import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,54 +12,45 @@ import java.util.Objects;
  */
 
 public class HybridCar extends Car {
-    private double currentFuel;
-    private double currentBattery;
-    private double fuelConsumeKM;
-    private double batteryConsumeKM;
-    private double totalBattery;
-    private double totalFuel;
+    private double currentFuelAutonomy;
+    private double totalBatteryAutonomy;
+    private double currentBatteryAutonomy;
+    private double totalFuelAutonomy;
 
     /**
      * Construtor por omissão.
      */
     public HybridCar() {
         super();
-        this.currentFuel = 0;
-        this.currentBattery = 0;
-        this.fuelConsumeKM = 0;
-        this.batteryConsumeKM = 0;
-        this.totalBattery = 0;
-        this.totalFuel = 0;
+        this.currentFuelAutonomy = 0;
+        this.currentBatteryAutonomy = 0;
+        this.totalBatteryAutonomy = 0;
+        this.totalFuelAutonomy = 0;
     }
 
     /**
      * Construtor parametrizado
      *
-     * @param mediumSpeed      velocidade média do carro
-     * @param priceKm          preço médio por quilómetro
-     * @param pastRents        listagem de arrendamentos anteriores do carro
-     * @param rating           avaliação atual do carro
-     * @param location         localização atual do carro
-     * @param proprietary      proprietário do carro
-     * @param licensePlate     matrícula do carro
-     * @param liability        fiabilidade do carro.
-     * @param currentFuel      combustível atual do carro
-     * @param currentBattery   bateria atual do carro
-     * @param fuelConsumeKM    consumo médio de combustível do carro por quilómetro
-     * @param batteryConsumeKM consumo médio de bateria do carro por quilómetro
-     * @param totalBattery     bateria total do carro
-     * @param totalFuel        capacidade total de combustível do carro
+     * @param mediumSpeed          velocidade média do carro
+     * @param priceKm              preço médio por quilómetro
+     * @param pastRents            listagem de arrendamentos anteriores do carro
+     * @param rating               avaliação atual do carro
+     * @param location             localização atual do carro
+     * @param proprietary          proprietário do carro
+     * @param licensePlate         matrícula do carro
+     * @param liability            fiabilidade do carro.
+     * @param totalBatteryAutonomy bateria total do carro
+     * @param totalFuelAutonomy    capacidade total de combustível do carro
      */
-    public HybridCar(String brand, int mediumSpeed, double priceKm, List<Rental> pastRents, int rating, Point location,
-                     Proprietary proprietary, String licensePlate, int liability, double currentFuel, double currentBattery,
-                     double fuelConsumeKM, double batteryConsumeKM, double totalBattery, double totalFuel) {
-        super(brand, mediumSpeed, priceKm, pastRents, rating, location, proprietary, licensePlate, liability);
-        this.currentFuel = currentFuel;
-        this.currentBattery = currentBattery;
-        this.fuelConsumeKM = fuelConsumeKM;
-        this.batteryConsumeKM = batteryConsumeKM;
-        this.totalBattery = totalBattery;
-        this.totalFuel = totalFuel;
+    public HybridCar(String brand, int mediumSpeed, double priceKm, double consumeKm, List<Rental> pastRents,
+                     int rating, Point2D.Double location, Proprietary proprietary, String licensePlate, int liability,
+                     double currentFuelAutonomy, double batteryAutonomy, double totalBatteryAutonomy,
+                     double totalFuelAutonomy) {
+        super(brand, mediumSpeed, priceKm, consumeKm, pastRents, rating, location, proprietary, licensePlate, liability);
+        this.currentFuelAutonomy = currentFuelAutonomy;
+        this.currentBatteryAutonomy = batteryAutonomy;
+        this.totalBatteryAutonomy = totalBatteryAutonomy;
+        this.totalFuelAutonomy = totalFuelAutonomy;
     }
 
     /**
@@ -67,12 +58,10 @@ public class HybridCar extends Car {
      */
     public HybridCar(HybridCar hybridCar) {
         super(hybridCar);
-        this.currentFuel = hybridCar.getCurrentFuel();
-        this.currentBattery = hybridCar.getCurrentBattery();
-        this.fuelConsumeKM = hybridCar.getFuelConsumeKM();
-        this.batteryConsumeKM = hybridCar.getBatteryConsumeKM();
-        this.totalBattery = hybridCar.getTotalBattery();
-        this.totalFuel = hybridCar.getTotalFuel();
+        this.currentFuelAutonomy = hybridCar.getCurrentFuelAutonomy();
+        this.currentBatteryAutonomy = hybridCar.getCurrentBatteryAutonomy();
+        this.totalBatteryAutonomy = hybridCar.getTotalBatteryAutonomy();
+        this.totalFuelAutonomy = hybridCar.getTotalFuelAutonomy();
     }
 
     /**
@@ -80,8 +69,8 @@ public class HybridCar extends Car {
      *
      * @return combustível atual do carro
      */
-    public double getCurrentFuel() {
-        return currentFuel;
+    public double getCurrentFuelAutonomy() {
+        return currentFuelAutonomy;
     }
 
     /**
@@ -89,8 +78,8 @@ public class HybridCar extends Car {
      *
      * @param currentFuel combustível atual do carro
      */
-    public void setCurrentFuel(double currentFuel) {
-        this.currentFuel = currentFuel;
+    public void setCurrentFuelAutonomy(double currentFuel) {
+        this.currentFuelAutonomy = currentFuel;
     }
 
     /**
@@ -98,53 +87,17 @@ public class HybridCar extends Car {
      *
      * @return bateria atual do carro
      */
-    public double getCurrentBattery() {
-        return currentBattery;
+    public double getCurrentBatteryAutonomy() {
+        return currentBatteryAutonomy;
     }
 
     /**
      * Atribui ao carro a bateria atual.
      *
-     * @param currentBattery bateria atual do carro
+     * @param currentBatteryAutonomy bateria atual do carro
      */
-    public void setCurrentBattery(double currentBattery) {
-        this.currentBattery = currentBattery;
-    }
-
-    /**
-     * Devolve o consumo médio de combustível do carro por quilómetro.
-     *
-     * @return consumo médio de combustível por quilómetro
-     */
-    public double getFuelConsumeKM() {
-        return fuelConsumeKM;
-    }
-
-    /**
-     * Atribui ao carro o consumo médio de combustível por quilómetro.
-     *
-     * @param fuelConsumeKM consumo médio de combustível por quilómetro
-     */
-    public void setFuelConsumeKM(double fuelConsumeKM) {
-        this.fuelConsumeKM = fuelConsumeKM;
-    }
-
-    /**
-     * Devolve o consumo médio de bateria por quilómetro do carro.
-     *
-     * @return consumo médio de bateria por quilómetro
-     */
-    public double getBatteryConsumeKM() {
-        return batteryConsumeKM;
-    }
-
-    /**
-     * Atribui ao carro o consumo médio de bateria por quilómetro.
-     *
-     * @param batteryConsumeKM consumo médio de bateria por quilómetro
-     */
-    public void setBatteryConsumeKM(double batteryConsumeKM) {
-        this.batteryConsumeKM = batteryConsumeKM;
+    public void setCurrentBatteryAutonomy(double currentBatteryAutonomy) {
+        this.currentBatteryAutonomy = currentBatteryAutonomy;
     }
 
     /**
@@ -152,17 +105,17 @@ public class HybridCar extends Car {
      *
      * @return bateria total do carro
      */
-    public double getTotalBattery() {
-        return totalBattery;
+    public double getTotalBatteryAutonomy() {
+        return totalBatteryAutonomy;
     }
 
     /**
      * Atribui ao carro a bateria total.
      *
-     * @param totalBattery bateria total do carro
+     * @param totalBatteryAutonomy bateria total do carro
      */
-    public void setTotalBattery(double totalBattery) {
-        this.totalBattery = totalBattery;
+    public void setTotalBatteryAutonomy(double totalBatteryAutonomy) {
+        this.totalBatteryAutonomy = totalBatteryAutonomy;
     }
 
     /**
@@ -170,17 +123,17 @@ public class HybridCar extends Car {
      *
      * @return capacidade total de combustível do carro
      */
-    public double getTotalFuel() {
-        return totalFuel;
+    public double getTotalFuelAutonomy() {
+        return totalFuelAutonomy;
     }
 
     /**
      * Atribui a capacidade total de combustível do carro.
      *
-     * @param totalFuel capacidade total de combustível do carro
+     * @param totalFuelAutonomy capacidade total de combustível do carro
      */
-    public void setTotalFuel(double totalFuel) {
-        this.totalFuel = totalFuel;
+    public void setTotalFuelAutonomy(double totalFuelAutonomy) {
+        this.totalFuelAutonomy = totalFuelAutonomy;
     }
 
     /**
@@ -195,12 +148,10 @@ public class HybridCar extends Car {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         HybridCar hybridCar = (HybridCar) o;
-        return Double.compare(hybridCar.currentFuel, currentFuel) == 0 &&
-                Double.compare(hybridCar.currentBattery, currentBattery) == 0 &&
-                Double.compare(hybridCar.fuelConsumeKM, fuelConsumeKM) == 0 &&
-                Double.compare(hybridCar.batteryConsumeKM, batteryConsumeKM) == 0 &&
-                Double.compare(hybridCar.totalBattery, totalBattery) == 0 &&
-                Double.compare(hybridCar.totalFuel, totalFuel) == 0;
+        return Double.compare(hybridCar.currentFuelAutonomy, currentFuelAutonomy) == 0 &&
+                Double.compare(hybridCar.currentBatteryAutonomy, currentBatteryAutonomy) == 0 &&
+                Double.compare(hybridCar.totalBatteryAutonomy, totalBatteryAutonomy) == 0 &&
+                Double.compare(hybridCar.totalFuelAutonomy, totalFuelAutonomy) == 0;
     }
 
     /**
@@ -210,7 +161,7 @@ public class HybridCar extends Car {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), currentFuel, currentBattery, fuelConsumeKM, batteryConsumeKM, totalBattery, totalFuel);
+        return Objects.hash(super.hashCode(), currentFuelAutonomy, currentBatteryAutonomy, totalBatteryAutonomy, totalFuelAutonomy);
     }
 
     /**
@@ -222,12 +173,10 @@ public class HybridCar extends Car {
     public String toString() {
         return "HybridCar{" +
                 super.toString() +
-                ", currentFuel=" + currentFuel +
-                ", currentBattery=" + currentBattery +
-                ", fuelConsumeKM=" + fuelConsumeKM +
-                ", batteryConsumeKM=" + batteryConsumeKM +
-                ", totalBattery=" + totalBattery +
-                ", totalFuel=" + totalFuel +
+                ", currentFuel=" + currentFuelAutonomy +
+                ", batteryAutonomy=" + currentBatteryAutonomy +
+                ", totalBattery=" + totalBatteryAutonomy +
+                ", totalFuel=" + totalFuelAutonomy +
                 '}';
     }
 
@@ -238,14 +187,13 @@ public class HybridCar extends Car {
      */
     public HybridCar clone() {
         HybridCar newHybridCar = (HybridCar) super.clone();
-        newHybridCar.setCurrentFuel(this.currentFuel);
-        newHybridCar.setCurrentBattery(this.currentBattery);
-        newHybridCar.setFuelConsumeKM(this.fuelConsumeKM);
-        newHybridCar.setBatteryConsumeKM(this.batteryConsumeKM);
-        newHybridCar.setTotalBattery(this.totalBattery);
-        newHybridCar.setTotalFuel(this.totalFuel);
+        newHybridCar.setCurrentFuelAutonomy(this.currentFuelAutonomy);
+        newHybridCar.setCurrentBatteryAutonomy(this.currentBatteryAutonomy);
+        newHybridCar.setTotalBatteryAutonomy(this.totalBatteryAutonomy);
+        newHybridCar.setTotalFuelAutonomy(this.totalFuelAutonomy);
         return newHybridCar;
     }
+
 
     /**
      * Método que calcula a autonomia atual do carro em causa.
@@ -253,7 +201,7 @@ public class HybridCar extends Car {
      * @return distância que a relação combustível atual e bateria atual-consumo permite que o carro percorra
      */
     public double getAutonomy() {
-        return (currentFuel / fuelConsumeKM) + (currentBattery / batteryConsumeKM);
+        return (currentFuelAutonomy + currentBatteryAutonomy) / this.getConsumeKm();
     }
 
     /**
@@ -263,7 +211,7 @@ public class HybridCar extends Car {
      * carro percorra
      */
     public double getTotalAutonomy() {
-        return (totalFuel / fuelConsumeKM) + (totalBattery / batteryConsumeKM);
+        return (totalFuelAutonomy + totalBatteryAutonomy) / this.getConsumeKm();
     }
 
     /**
@@ -273,14 +221,14 @@ public class HybridCar extends Car {
      * @param dist distância percorrida pelo carro
      */
     public void decreasePower(double dist) {
-        double batteryNeeded = dist * batteryConsumeKM;
-        if (batteryNeeded > currentBattery) {
-            double distLeft = dist - (currentBattery / batteryConsumeKM);
-            setCurrentBattery(0);
-            double fuelNeeded = distLeft * fuelConsumeKM;
-            setCurrentFuel(currentFuel - fuelNeeded);
+        double batteryNeeded = dist * this.getConsumeKm();
+        if (batteryNeeded > currentBatteryAutonomy) {
+            double distLeft = dist - (currentBatteryAutonomy / this.getConsumeKm());
+            setCurrentBatteryAutonomy(0);
+            double fuelNeeded = distLeft * this.getConsumeKm();
+            setCurrentFuelAutonomy(currentFuelAutonomy - fuelNeeded);
         } else {
-            setCurrentBattery(currentBattery - batteryNeeded);
+            setCurrentBatteryAutonomy(currentBatteryAutonomy - batteryNeeded);
         }
     }
 }

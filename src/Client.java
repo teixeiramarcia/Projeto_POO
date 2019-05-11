@@ -1,4 +1,4 @@
-import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 
 public class Client extends User {
-    private Point location;
+    private Point2D.Double location;
     private List<Rental> rentals;
     private int rating;
     private int drivingSkill;
@@ -42,8 +42,8 @@ public class Client extends User {
      * @param rating       avaliação do cliente
      * @param drivingSkill destreza de condução do cliente
      */
-    public Client(String name, String email, String password, String address, String birthDate, String nif, Point location,
-                  List<Rental> rentals, int rating, int drivingSkill) {
+    public Client(String name, String email, String password, String address, String birthDate, String nif,
+                  Point2D.Double location, List<Rental> rentals, int rating, int drivingSkill) {
         super(name, email, password, address, birthDate, nif);
         this.location = location;
         this.rentals = rentals;
@@ -67,7 +67,7 @@ public class Client extends User {
      *
      * @return localização atual do cliente
      */
-    public Point getLocation() {
+    public Point2D.Double getLocation() {
         return location;
     }
 
@@ -76,7 +76,7 @@ public class Client extends User {
      *
      * @param location posição atual do cliente
      */
-    public void setLocation(Point location) {
+    public void setLocation(Point2D.Double location) {
         this.location = location;
     }
 

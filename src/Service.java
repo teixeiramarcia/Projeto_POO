@@ -1,4 +1,4 @@
-import java.awt.*;
+import java.awt.geom.Point2D;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,7 @@ public class Service {
     private Map<String, ElectricCar> electricCars;
     private Map<String, HybridCar> hybridCars;
     private Map<String, Client> allClients;
+    private Map<String, Proprietary> allProprietaries;
 
     /**
      * Devolve a listagem de Carros a Combustível que o serviço possui.
@@ -84,7 +85,7 @@ public class Service {
      * @param finish Ponto de chegada do carro
      * @param car    carro requerido no serviço
      */
-    public double canMakeTrip(Point start, Point finish, Car car) {
+    public double canMakeTrip(Point2D.Double start, Point2D.Double finish, Car car) {
         double distance = distance(start, finish);
         double autonomyNow = getCurrentAutonomy(car);
         double autonomyTotal = getTotalAutonomy(car);
@@ -103,7 +104,7 @@ public class Service {
      * @param finish Ponto de chegada do carro
      * @return disntância entre os dois pontos
      */
-    public static double distance(Point start, Point finish) {
+    public static double distance(Point2D.Double start, Point2D.Double finish) {
         double coordX = Math.pow(Math.abs(start.getX() - finish.getX()), 2);
         double coordY = Math.pow(Math.abs(start.getY() - finish.getY()), 2);
 
@@ -120,11 +121,11 @@ public class Service {
         double autonomy = 0;
 
         if (car.getClass().equals(ElectricCar.class)) {
-            autonomy = ((ElectricCar) car).getAutonomy();
+            autonomy = ((ElectricCar) car).getCurrentBatteryAutonomy();
         } else if (car.getClass().equals(HybridCar.class)) {
             autonomy = ((HybridCar) car).getAutonomy();
         } else if (car.getClass().equals(FuelCar.class)) {
-            autonomy = ((FuelCar) car).getAutonomy();
+            autonomy = ((FuelCar) car).getCurrentFuelAutonomy();
         }
 
         return autonomy;
@@ -140,11 +141,11 @@ public class Service {
         double autonomy = 0;
 
         if (car.getClass().equals(ElectricCar.class)) {
-            autonomy = ((ElectricCar) car).getTotalAutonomy();
+            autonomy = ((ElectricCar) car).getTotalBatteryAutonomy();
         } else if (car.getClass().equals(HybridCar.class)) {
             autonomy = ((HybridCar) car).getTotalAutonomy();
         } else if (car.getClass().equals(FuelCar.class)) {
-            autonomy = ((FuelCar) car).getTotalAutonomy();
+            autonomy = ((FuelCar) car).getTotalFuelAutonomy();
         }
 
         return autonomy;
@@ -186,7 +187,7 @@ public class Service {
      * @param useStartDate data de início de uso do carro alugado
      * @return novo aluguer do carro
      */
-    public Rental createRental(Car rentedCar, Client client, Point finalPos, LocalDateTime useStartDate) {
+    public Rental createRental(Car rentedCar, Client client, Point2D.Double finalPos, LocalDateTime useStartDate) {
         Rental rental = new Rental(rentedCar, client, rentedCar.getLocation(), finalPos, "Pendente",
                 LocalDateTime.now(), useStartDate, null, -1);
 
@@ -261,16 +262,21 @@ public class Service {
      * @param rented carro alugado
      */
     public void updateCarPower(Rental rented) {
-        Point posInit = rented.getInitialPosCar();
-        Point posFinal = rented.getFinalPos();
+        Point2D.Double posInit = rented.getInitialPosCar();
+        Point2D.Double posFinal = rented.getFinalPos();
         double dist = distance(posInit, posFinal);
         Car car = rented.getRentedCar();
         if (car.getClass().equals(ElectricCar.class)) {
-            ((ElectricCar) car).decreaseBattery(dist);
+            ((ElectricCar) car).decreaseBatteryAutonomy(dist);
         } else if (car.getClass().equals(FuelCar.class)) {
             ((FuelCar) car).decreaseFuel(dist);
         } else if (car.getClass().equals(HybridCar.class)) {
             ((HybridCar) car).decreasePower(dist);
         }
+    }
+
+    public void loadState(String filename) {
+        LoadState newLoadState = new LoadState(allProprietaries, allClients, fuelCars, electricCars, hybridCars);
+
     }
 }
