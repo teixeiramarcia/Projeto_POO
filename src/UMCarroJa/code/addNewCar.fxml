@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UMCarroJa.code.AddNewCarService">
+   <children>
+      <Label layoutX="256.0" layoutY="39.0" text="New Car">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="ok" layoutX="282.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#addCar" text="OK" />
+      <TextField fx:id="brand" layoutX="217.0" layoutY="83.0" prefHeight="27.0" prefWidth="167.0" promptText="brand" />
+      <TextField fx:id="mediumSpeed" layoutX="217.0" layoutY="137.0" promptText="medium speed" />
+      <TextField fx:id="priceKm" layoutX="217.0" layoutY="164.0" promptText="price/Km" />
+      <TextField fx:id="consumeKm" layoutX="217.0" layoutY="191.0" promptText="consume/Km" />
+      <TextField fx:id="locationX" layoutX="217.0" layoutY="217.0" prefHeight="27.0" prefWidth="83.0" promptText="location x" />
+      <TextField fx:id="licensePlate" layoutX="217.0" layoutY="244.0" promptText="license plate" />
+      <Button fx:id="goBack" layoutX="266.0" layoutY="346.0" mnemonicParsing="false" onMouseClicked="#goBack" text="Go back" />
+      <TextField fx:id="locationY" layoutX="301.0" layoutY="217.0" prefHeight="27.0" prefWidth="83.0" promptText="location y" />
+      <TextField fx:id="carType" layoutX="217.0" layoutY="110.0" promptText="car type" />
+      <TextField fx:id="carAutonomy" layoutX="217.0" layoutY="271.0" promptText="car autonomy" />
+   </children>
+</AnchorPane>

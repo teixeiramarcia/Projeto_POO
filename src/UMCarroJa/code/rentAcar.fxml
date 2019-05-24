@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UMCarroJa.code.RentAcarService">
+   <children>
+      <Label layoutX="17.0" layoutY="21.0" text="Car Rental">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="destinationY" layoutX="24.0" layoutY="200.0" prefHeight="27.0" prefWidth="95.0" promptText="destination y" />
+      <Button fx:id="ok" layoutX="28.0" layoutY="308.0" mnemonicParsing="false" onMouseClicked="#ok" prefHeight="27.0" prefWidth="69.0" text="OK" />
+      <CheckBox fx:id="hybridCar" layoutX="25.0" layoutY="135.0" mnemonicParsing="false" text="Hybrid Car" />
+      <CheckBox fx:id="electricCar" layoutX="25.0" layoutY="109.0" mnemonicParsing="false" text="Electric Car" />
+      <CheckBox fx:id="fuelCar" layoutX="25.0" layoutY="84.0" mnemonicParsing="false" text="Fuel Car" />
+      <CheckBox fx:id="cheaperCars" layoutX="25.0" layoutY="264.0" mnemonicParsing="false" text="Cheaper" />
+      <CheckBox fx:id="closerCars" layoutX="24.0" layoutY="236.0" mnemonicParsing="false" text="Closer" />
+      <Button fx:id="goBack" layoutX="28.0" layoutY="348.0" mnemonicParsing="false" onMouseClicked="#goBack" prefHeight="27.0" prefWidth="69.0" text="Go back" />
+      <TextField fx:id="destinationX" layoutX="24.0" layoutY="166.0" prefHeight="27.0" prefWidth="95.0" promptText="destination x" />
+      <TableView fx:id="carsForChoice" layoutX="152.0" layoutY="17.0" onMouseClicked="#handleMouseClick" prefHeight="366.0" prefWidth="434.0" />
+   </children>
+</AnchorPane>
