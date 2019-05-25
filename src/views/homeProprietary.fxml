@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeProprietaryService">
+    <children>
+        <Button fx:id="addNewCar" layoutX="34.0" layoutY="162.0" mnemonicParsing="false" onMouseClicked="#addCar"
+                text="Add new car"/>
+        <Button fx:id="rentalHistory" layoutX="459.0" layoutY="162.0" mnemonicParsing="false"
+                onMouseClicked="#rentalHistory" text="Rental History"/>
+        <Button fx:id="rentalRequests" layoutX="246.0" layoutY="285.0" mnemonicParsing="false"
+                onMouseClicked="#rentalRequests" text="Rental Requests"/>
+        <Label layoutX="262.0" layoutY="100.0" text="Rating:"/>
+        <Label fx:id="proprietaryName" alignment="CENTER" layoutY="80.0" prefHeight="20.0" prefWidth="600.0"
+               text="Label">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+        <Label layoutX="248.0" layoutY="44.0" text="Welcome!">
+            <font>
+                <Font size="22.0"/>
+            </font>
+        </Label>
+        <Label fx:id="rating" layoutX="305.0" layoutY="100.0" text="Label"/>
+        <Button fx:id="logOut" layoutX="268.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#logOut"
+                text="Log out"/>
+    </children>
+</AnchorPane>
