@@ -35,7 +35,7 @@ public class HomeProprietaryService {
     }
 
     public void rentalHistory() throws IOException {
-        Redirect.redirectTo(rentalHistory, "views/rentalHistory.fxml");
+        Redirect.redirectTo(rentalHistory, "views/rentalHistoryProp.fxml");
     }
 
     public void logOut() throws IOException {

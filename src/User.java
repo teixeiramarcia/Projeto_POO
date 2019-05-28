@@ -7,10 +7,10 @@ import java.util.Objects;
 /**
  * Atores do sistema que interagem com a aplicação.
  *
- * @author A80943
- * @author A81283
  * @author A85762
- * @version 20190519
+ * @author A81283
+ * @author A80943
+ * @version 20190525
  */
 
 public class User implements Serializable {

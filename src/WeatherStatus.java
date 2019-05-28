@@ -4,10 +4,10 @@ import java.util.Objects;
 /**
  * Classe que atribui a cada estado de metereologia uma penalização no tempo de viagem.
  *
- * @author A80943
- * @author A81283
  * @author A85762
- * @version 20190403
+ * @author A81283
+ * @author A80943
+ * @version 20190525
  */
 
 public class WeatherStatus implements Serializable {

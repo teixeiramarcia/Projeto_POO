@@ -13,10 +13,10 @@ import java.util.stream.Stream;
 /**
  * Classe que faz o carregamento inicial de dados para a aplicação.
  *
- * @author A80943
- * @author A81283
  * @author A85762
- * @version 20190519
+ * @author A81283
+ * @author A80943
+ * @version 20190525
  */
 public class LoadState implements Serializable {
     private Map<String, Proprietary> allProprietaries;
@@ -50,10 +50,9 @@ public class LoadState implements Serializable {
      * Método que a partir do carregamento inicial de dados do sistema faz a criação de carros.
      *
      * @param newCar novo carro a ser adicionado ao sistema
-     * @return carro criado no sistema
      * @throws CarTypeDoesNotExistException
      */
-    public Car createCar(String newCar) throws CarTypeDoesNotExistException {
+    public void createCar(String newCar) throws CarTypeDoesNotExistException {
         String[] parts = newCar.split(",");
 
         Car car;
@@ -90,7 +89,6 @@ public class LoadState implements Serializable {
         car.setConsumeKm(Double.parseDouble(parts[6]));
         Point2D.Double newPoint = new Point2D.Double((Double.parseDouble(parts[8])), (Double.parseDouble(parts[9])));
         car.setLocation(newPoint);
-        return car;
     }
 
     /**

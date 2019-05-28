@@ -68,7 +68,7 @@ public class AddNewCarService {
                 alert.showAndWait();
             }
         } else {
-            Car newCar = new ElectricCar(brandText, mediumSpeedText, priceKmText, consumeKmText, new ArrayList<>(), 100,
+            Car newCar = new FuelCar(brandText, mediumSpeedText, priceKmText, consumeKmText, new ArrayList<>(), 100,
                     location, proprietary, licensePlateText, 100, carAutonomyText, carAutonomyText);
             try {
                 UMCarroJa.getService().addNewFuelCar(newCar);

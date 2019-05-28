@@ -58,7 +58,7 @@ public class SignInService {
     }
 
     public void goBack() throws IOException {
-        Redirect.redirectTo(name, "views/logIn.fxml");
+        Redirect.redirectTo(name, "views/login.fxml");
     }
 
 }

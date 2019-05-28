@@ -6,10 +6,10 @@ import java.util.Objects;
 /**
  * Subclasse de Car que contém as informações adicionais relativas ao HybridCar.
  *
- * @author A80943
- * @author A81283
  * @author A85762
- * @version 20190519
+ * @author A81283
+ * @author A80943
+ * @version 20190525
  */
 
 public class HybridCar extends Car implements Serializable {
@@ -217,21 +217,4 @@ public class HybridCar extends Car implements Serializable {
         return (totalFuelAutonomy + totalBatteryAutonomy) / this.getConsumeKm();
     }
 
-    /**
-     * Método que faz a redução da bateria + combustível do carro, tendo em conta a distância que percorreu,
-     * no final da viagem
-     *
-     * @param dist distância percorrida pelo carro
-     */
-    public void decreasePower(double dist) {
-        double batteryNeeded = dist * this.getConsumeKm();
-        if (batteryNeeded > currentBatteryAutonomy) {
-            double distLeft = dist - (currentBatteryAutonomy / this.getConsumeKm());
-            setCurrentBatteryAutonomy(0);
-            double fuelNeeded = distLeft * this.getConsumeKm();
-            setCurrentFuelAutonomy(currentFuelAutonomy - fuelNeeded);
-        } else {
-            setCurrentBatteryAutonomy(currentBatteryAutonomy - batteryNeeded);
-        }
-    }
 }

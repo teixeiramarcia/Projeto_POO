@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane onMouseClicked="#backTo" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="CarAddedService">
     <children>
         <Label alignment="CENTER" layoutY="-1.0" prefHeight="274.0" prefWidth="602.0" text="Car added successfully!">

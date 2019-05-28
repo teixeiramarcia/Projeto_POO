@@ -9,10 +9,10 @@ import java.util.Map;
 /**
  * Write a description of class UMCarroJa.Service here.
  *
- * @author A80943
- * @author A81283
  * @author A85762
- * @version 20190417
+ * @author A81283
+ * @author A80943
+ * @version 20190525
  */
 
 public class Service implements Serializable {
@@ -313,35 +313,6 @@ public class Service implements Serializable {
     }
 
     /**
-     * Coloca a posição final do carro alugado, como posição inicial do mesmo para um próximo aluguer.
-     *
-     * @param lastRental ultimo aluguer efetuado
-     */
-    public void waitingForNewRental(Rental lastRental) {
-        Car car = lastRental.getRentedCar();
-        car.setLocation(lastRental.getFinalPos());
-    }
-
-    /**
-     * Atualiza a bateria e/ou combustível do carro alugado no final da viagem efetuadoa.
-     *
-     * @param rented carro alugado
-     */
-    public void updateCarPower(Rental rented) {
-        Point2D.Double posInit = rented.getInitialPosCar();
-        Point2D.Double posFinal = rented.getFinalPos();
-        double dist = distance(posInit, posFinal);
-        Car car = rented.getRentedCar();
-        if (car.getClass().equals(ElectricCar.class)) {
-            ((ElectricCar) car).decreaseBatteryAutonomy(dist);
-        } else if (car.getClass().equals(FuelCar.class)) {
-            ((FuelCar) car).decreaseFuel(dist);
-        } else if (car.getClass().equals(HybridCar.class)) {
-            ((HybridCar) car).decreasePower(dist);
-        }
-    }
-
-    /**
      * Método que efetua o login a um utlilizador, quer Cliente quer Proprietário.
      *
      * @param email         email do utilizador
@@ -502,10 +473,16 @@ public class Service implements Serializable {
     }
 
     /**
-     * @param isCloserCars
-     * @param isCheaperCars
-     * @param destination
-     * @return
+     * Método que devolve uma listagem  de Carros a Combustível que obedeçam aos pedidos do cliente podendo estes ser
+     * que o carro se encontre mais perto, seja mais barato e seja capaz de efetuar a viagem requerida.
+     *
+     * @param isCloserCars Booleano que indica se se trata de um carro elegível para se encontrar na lista de carros
+     *                     mais próximos do cliente
+     * @param isCheaperCars Booleano que indica se se trata de um carro elegível para se encontrar na lista de carros
+     *                      mais baratos (por quilómetro)
+     * @param destination Booleano que indica se se trata de um carro elegível para se encontrar na lista de carros
+     *                    capazes de efetuar a viagem pretendida
+     * @return lista de carros de entre os quais o cliente pode escolher2
      */
     @SuppressWarnings("Duplicates")
     public List<Car> getFuelCars(boolean isCloserCars, boolean isCheaperCars, Point2D.Double destination) {
@@ -532,6 +509,18 @@ public class Service implements Serializable {
         return resultado;
     }
 
+    /**
+     * Método que devolve uma listagem  de Carros Eléctricos que obedeçam aos pedidos do cliente podendo estes ser
+     * que o carro se encontre mais perto, seja mais barato e seja capaz de efetuar a viagem requerida.
+     *
+     * @param isCloserCars Booleano que indica se se trata de um carro elegível para se encontrar na lista de carros
+     *                     mais próximos do cliente
+     * @param isCheaperCars Booleano que indica se se trata de um carro elegível para se encontrar na lista de carros
+     *                      mais baratos (por quilómetro)
+     * @param destination Booleano que indica se se trata de um carro elegível para se encontrar na lista de carros
+     *                    capazes de efetuar a viagem pretendida
+     * @return lista de carros de entre os quais o cliente pode escolher2
+     */
     @SuppressWarnings("Duplicates")
     public List<Car> getElectricCars(boolean isCloserCars, boolean isCheaperCars, Point2D.Double destination) {
         List<ElectricCar> allElectricCars = new ArrayList<>(electricCars.values());
@@ -555,6 +544,18 @@ public class Service implements Serializable {
         return resultado;
     }
 
+    /**
+     * Método que devolve uma listagem  de Carros Híbridos que obedeçam aos pedidos do cliente podendo estes ser
+     * que o carro se encontre mais perto, seja mais barato e seja capaz de efetuar a viagem requerida.
+     *
+     * @param isCloserCars Booleano que indica se se trata de um carro elegível para se encontrar na lista de carros
+     *                     mais próximos do cliente
+     * @param isCheaperCars Booleano que indica se se trata de um carro elegível para se encontrar na lista de carros
+     *                      mais baratos (por quilómetro)
+     * @param destination Booleano que indica se se trata de um carro elegível para se encontrar na lista de carros
+     *                    capazes de efetuar a viagem pretendida
+     * @return lista de carros de entre os quais o cliente pode escolher2
+     */
     @SuppressWarnings("Duplicates")
     public List<Car> getHybridCars(boolean isCloserCars, boolean isCheaperCars, Point2D.Double destination) {
         List<HybridCar> allHybridCars = new ArrayList<>(hybridCars.values());
@@ -578,11 +579,19 @@ public class Service implements Serializable {
         return resultado;
     }
 
+    /**
+     * Método que efetua a criação de um novo aluguer.
+     *
+     * @param car carro que o cliente pretende alugar
+     * @param destinationX coordenada x do destino pretendido
+     * @param destinationY coordenada y do destino pretendido
+     *
+     * @throws ClientAlreadyHasOngoingRentalException
+     */
     //CLIENT
     public void createRental(Car car, Double destinationX, Double destinationY)
             throws ClientAlreadyHasOngoingRentalException {
         if (ongoingRental != null) {
-            System.out.println(ongoingRental);
             throw new ClientAlreadyHasOngoingRentalException();
         }
 
@@ -611,7 +620,11 @@ public class Service implements Serializable {
     }
 
 
-    //PROPRIETARY
+    /**
+     * Método que devolve a listagem de pedidos de aluguer pendentes de um determinado Proprietário.
+     *
+     * @return lista de alugueres pendentes
+     */
     public List<Rental> getPendentRequests() {
         if (allRentals.containsKey(loggedInUser)) {
             return allRentals.get(loggedInUser);
@@ -620,11 +633,24 @@ public class Service implements Serializable {
         }
     }
 
+    /**
+     * Método que atribui um estado a um aluguer.
+     *
+     * @param rental aluguer em efeito
+     * @param newStatus estado atribuído ao aluguer
+     */
     public void changeStatus(Rental rental, String newStatus) {
         rental.setRentalStatus(newStatus);
         allRentals.get(loggedInUser).remove(rental);
     }
 
+    /**
+     * Método que guarda o estado da aplicação num ficheiro binário.
+     *
+     * @param appState estado atual da aplicação
+     *
+     * @throws IOException
+     */
     public void saveState(String appState) throws IOException {
         FileOutputStream fos = new FileOutputStream(appState);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -633,6 +659,15 @@ public class Service implements Serializable {
         oos.close();
     }
 
+    /**
+     * Método que carrega o estado da aplicação para um ficheiro binário.
+     *
+     * @param appState estado atual da aplicação
+     * @return serviço com a informação carregada
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public Service chargeState(String appState) throws IOException,
             ClassNotFoundException {
         FileInputStream fis = new FileInputStream(appState);

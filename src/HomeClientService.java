@@ -33,7 +33,7 @@ public class HomeClientService {
     }
 
     public void rentalHistory() throws IOException {
-        Redirect.redirectTo(rentalHistory, "views/rentalHistory.fxml");
+        Redirect.redirectTo(rentalHistory, "views/rentalHistoryClient.fxml");
     }
 
     public void updateLocation() {

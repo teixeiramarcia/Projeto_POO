@@ -6,10 +6,10 @@ import java.util.Objects;
 /**
  * Subclasse de Car que contém a informação adicional associada ao ElectricCar..
  *
- * @author A80943
- * @author A81283
  * @author A85762
- * @version 20190519
+ * @author A81283
+ * @author A80943
+ * @version 20190525
  */
 
 public class ElectricCar extends Car implements Serializable {
