@@ -2,17 +2,22 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="CarRentedService">
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CarRentedService">
     <children>
-        <Label alignment="CENTER" layoutY="98.0" prefHeight="17.0" prefWidth="600.0" text="Car rented successfully!">
+        <Label alignment="CENTER" layoutY="65.0" prefHeight="17.0" prefWidth="600.0" text="Car rented successfully!">
             <font>
-                <Font size="22.0"/>
+                <Font size="22.0" />
             </font>
         </Label>
-        <Button fx:id="goBack" layoutX="266.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#goBack"
-                text="Terminate"/>
+        <Button fx:id="goBack" layoutX="266.0" layoutY="312.0" mnemonicParsing="false" onMouseClicked="#goBack" text="Terminate" />
+      <Label alignment="CENTER" layoutX="3.0" layoutY="127.0" prefHeight="17.0" prefWidth="594.0" text="Before terminating the rental, please rate the car and corresponding proprietary:" />
+      <Button fx:id="carRate" layoutX="380.0" layoutY="162.0" mnemonicParsing="false" onMouseClicked="#rateCar" text="OK" />
+      <Button fx:id="propRate" layoutX="380.0" layoutY="199.0" mnemonicParsing="false" onMouseClicked="#rateProp" text="OK" />
+      <TextField fx:id="carRating" layoutX="191.0" layoutY="162.0" prefHeight="27.0" prefWidth="175.0" promptText="car rating (0-100)" />
+      <TextField fx:id="propRating" layoutX="191.0" layoutY="199.0" prefHeight="27.0" prefWidth="175.0" promptText="proprietary rating (0-100)" />
     </children>
 </AnchorPane>
