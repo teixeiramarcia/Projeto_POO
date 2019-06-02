@@ -497,7 +497,7 @@ public class Service implements Serializable {
             double preco = fuelCar.getPriceKm();
 
             if (canMakeTrip(carPos, destination, fuelCar) != -1) {
-                if (isCloserCars && dist <= 2) {
+                if (isCloserCars && dist <= 3) {
                     if (!isCheaperCars || preco <= 3) {
                         resultado.add(fuelCar);
                     }
@@ -533,7 +533,7 @@ public class Service implements Serializable {
             double dist = distance(carPos, clientPos);
             double preco = electricCar.getPriceKm();
 
-            if (isCloserCars && dist <= 2) {
+            if (isCloserCars && dist <= 3) {
                 if (!isCheaperCars || preco <= 3) {
                     resultado.add(electricCar);
                 }
@@ -568,7 +568,7 @@ public class Service implements Serializable {
             double dist = distance(carPos, clientPos);
             double preco = hybridCar.getPriceKm();
 
-            if (isCloserCars && dist <= 2) {
+            if (isCloserCars && dist <= 3) {
                 if (!isCheaperCars || preco <= 3) {
                     resultado.add(hybridCar);
                 }
