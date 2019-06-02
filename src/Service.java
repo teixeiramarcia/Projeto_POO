@@ -313,7 +313,7 @@ public class Service implements Serializable {
     }
 
     /**
-     * Método que efetua o login a um utlilizador, quer Cliente quer Proprietário.
+     * Método que efetua o login a um utilizador, quer Cliente quer Proprietário.
      *
      * @param email         email do utilizador
      * @param password      password do utilizador
